@@ -1,0 +1,7 @@
+sandbox/*
+.Rproj.user
+packrat/lib*/
+logs/*
+packrat/src/*
+.snakemake
+out/*
