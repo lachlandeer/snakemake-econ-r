@@ -9,12 +9,13 @@
 
 TO DO:
 
-* add an all rule to the ROOT Snakefile
-* Add Snakefile skeletons to each of the directories where work is likley to take place
+1. add an all rule to the ROOT Snakefile
+2. Add Snakefile skeletons to each of the directories where work is likley to take place
 
 ## How to Run
 
-TBD
+1. Open a terminal and navigate to this directory
+2. run `snakemake all`
 
 ## Install instructions
 * Install Snakemake (needs pip)
