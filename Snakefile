@@ -54,3 +54,17 @@ rule packrat_snap:
 rule packrat_restore:
     shell:
         "R -e 'packrat::restore()'"
+
+# --- Cleaning Rules --- #
+
+rule clean_all:
+    shell:
+        "rm -rf out/ log/"
+
+rule clean_output:
+    shell:
+        "rm -rf out/"
+
+rule clean_log:
+    shell:
+        "rm -rf log/"
