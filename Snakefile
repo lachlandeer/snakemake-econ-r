@@ -12,12 +12,28 @@ configfile: "config.yaml"
 
 # --- Sub Workflows --- #
 subworkflow data_cleaning:
-   workdir: "."
+   workdir:   config["ROOT"]
    snakefile: config["src_data_mgt"] + "Snakefile"
 
-# subworkflow figures:
-#    workdir: "."
-#    snakefile: config["src_figures"] + "Snakefile"
+subworkflow analysis:
+   workdir:   config["ROOT"]
+   snakefile: config["src_analysis"] + "Snakefile"
+
+subworkflow tables:
+   workdir:   config["ROOT"]
+   snakefile: config["src_tables"] + "Snakefile"
+
+subworkflow figures:
+   workdir:   config["ROOT"]
+   snakefile: config["src_figures"] + "Snakefile"
+
+subworkflow paper:
+   workdir: config["src_paper"]
+   snakefile:  config["src_paper"] + "Snakefile"
+
+subworkflow slides:
+   workdir: config["src_slides"]
+   snakefile: config["src_slides"] + "Snakefile"
 
 # --- Main Build Rules --- #
 
