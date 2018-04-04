@@ -51,7 +51,7 @@ rule packrat_init:
     shell:
         "R -e 'packrat::init()'"
 
-## packrat_snap: Look for new R packages in files & archives them
+## packrat_snap   : Look for new R packages in files & archives them
 rule packrat_snap:
     shell:
         "R -e 'packrat::snapshot()'"
@@ -63,60 +63,60 @@ rule packrat_restore:
 
 # --- Cleaning Rules --- #
 
-## clean_all: delete all output and log files for this project
+## clean_all      : delete all output and log files for this project
 rule clean_all:
     shell:
         "rm -rf out/ log/ *.pdf *.html"
 
-## clean_output: delete all built files in project's output and ROOT directory
+## clean_output   : delete all built files in project's output and ROOT directory
 rule clean_output:
     shell:
         "rm -rf out/ *.pdf *.html"
 
-## clean_logs: delete all log files for this project
+## clean_logs     : delete all log files for this project
 rule clean_log:
     shell:
         "rm -rf log/"
 
 # --- Help Rules --- #
 
-## help_main: prints help comments for Snakefile in ROOT directory
+## help_main      : prints help comments for Snakefile in ROOT directory
 rule help_main:
     input: "Snakefile"
     shell:
         "sed -n 's/^##//p' {input}"
 
-## help_analysis: prints help comments for Snakefile in analysis directory
+## help_analysis  : prints help comments for Snakefile in analysis directory
 rule help_analysis:
     input: config["src_analysis"] + "Snakefile"
     shell:
         "sed -n 's/^##//p' {input}"
 
-## help_data_mgt: prints help comments for Snakefile in data-management directory
+## help_data_mgt  : prints help comments for Snakefile in data-management directory
 rule help_data_mgt:
     input: config["src_data_mgt"] + "Snakefile"
     shell:
         "sed -n 's/^##//p' {input}"
 
-## help_figures: prints help comments for Snakefile in figures directory
+## help_figures   : prints help comments for Snakefile in figures directory
 rule help_figures:
     input: config["src_figures"] + "Snakefile"
     shell:
         "sed -n 's/^##//p' {input}"
 
-## help_paper: prints help comments for Snakefile in paper directory
+## help_paper     : prints help comments for Snakefile in paper directory
 rule help_paper:
     input: config["src_paper"] + "Snakefile"
     shell:
         "sed -n 's/^##//p' {input}"
 
-## help_slides: prints help comments for Snakefile in slides directory
+## help_slides    : prints help comments for Snakefile in slides directory
 rule help_slides:
     input: config["src_slides"] + "Snakefile"
     shell:
         "sed -n 's/^##//p' {input}"
 
-## help_tables: prints help comments for Snakefile in analysis directory
+## help_tables    : prints help comments for Snakefile in analysis directory
 rule help_tables:
     input: config["src_tables"] + "Snakefile"
     shell:
