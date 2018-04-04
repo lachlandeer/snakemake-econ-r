@@ -37,6 +37,7 @@ subworkflow slides:
 
 # --- Main Build Rules --- #
 
+# To be Done
 
 # --- Packrat Rules --- #
 rule packrat_install:
@@ -59,12 +60,14 @@ rule packrat_restore:
 
 rule clean_all:
     shell:
-        "rm -rf out/ log/"
+        "rm -rf out/ log/ *.pdf *.html"
 
 rule clean_output:
     shell:
-        "rm -rf out/"
+        "rm -rf out/ *.pdf *.html"
 
 rule clean_log:
     shell:
         "rm -rf log/"
+
+# --- Help Rules --- #
