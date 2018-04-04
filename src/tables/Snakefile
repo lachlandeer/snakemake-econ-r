@@ -1,0 +1,13 @@
+# subworlflow: tables
+#
+# Contributors: YOUR NAME
+
+import glob, os
+
+# --- Importing Configuration Files --- #
+
+configfile: "config.yaml"
+
+# --- Dictionaries --- #
+
+# --- Build Rules --- #
