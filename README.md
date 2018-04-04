@@ -55,6 +55,15 @@ want to ensure that the same `R` packages are used, and that the save *version* 
     ```
     This opens an R session to install packrat for us.
 
+* If you are starting a new project, which is likely if you are using
+   this template, you need to initialize a new packrat instance to
+   track your `R` packages and store them.
+   Enter the following command into the same terminal as above
+   and press `Return`.
+   ```
+   snakemake packrat_init
+   ```
+
 
 ## LICENSE
 
