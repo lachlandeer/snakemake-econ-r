@@ -1,3 +1,3 @@
 {
-    "KEEP": "non_oil == 1"
+    "KEEP_CONDITION": "non_oil == 1"
 }
