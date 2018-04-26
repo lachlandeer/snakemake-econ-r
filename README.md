@@ -71,4 +71,4 @@ TBD
 
 ## Suggested Citation:
 
-Deer, Lachlan. 2018. Reproducible Research Projects with R, Packrat and Snakemake.
+Deer, Lachlan and Julian Langer. 2018. Reproducible Economics Research Workflows with Snakemake.
