@@ -43,7 +43,8 @@ logAll = "2>&1"
 
 rule all:
     input:
-        data = data_cleaning(config["out_data"] + "mrw_complete.csv")
+        model = analysis(config["out_analysis"] + "ols.rds")
+        #data = data_cleaning(config["out_data"] + "mrw_complete.csv")
 
 # --- Packrat Rules --- #
 
