@@ -1,0 +1,391 @@
+---
+title: "Replicate MRW in full"
+author: '@lachlandeer & @julianlanger'
+date: "April 25, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+There probably won't be too much expository text.
+Essentially we want to replicate the entirety of the empirical component of Mankiw, Romer and Weil (1992)
+
+## Libraries
+
+```{r, warning=FALSE, message=FALSE}
+library(haven)      # reading stata data
+library(dplyr)      # data manipulation
+library(tibble)     # nicer dataframes
+library(stargazer)  # tables
+library(ggplot2)    # graphs
+library(car)        # linear hypotheses
+```
+
+
+## Load data
+```{r}
+mrw_data <- read_dta("raw_data/mrw.dta")
+```
+
+Structure?
+
+```{r}
+str(mrw_data)
+skimr::skim(mrw_data)
+```
+
+## Meaningful variable names
+
+```{r}
+
+mrw_data <- mrw_data %>% 
+              rename(non_oil = n, 
+                     oecd = o,
+                     intermediate = i,
+                     gdp_60 = rgdpw60,
+                     gdp_85 = rgdpw85,
+                     gdp_growth_60_85 = gdpgrowth,
+                     pop_growth_60_85 = popgrowth,
+                     inv_gdp = i_y,
+                     school = school)
+
+```
+
+## Variable Creation
+
+```{r}
+delta_gamma <- 0.05
+
+mrw_data <- mrw_data %>% 
+                  mutate(ln_gdp_85 = log(gdp_85),
+                         ln_gdp_60 = log(gdp_60),
+                         ln_gdp_growth = ln_gdp_85 - ln_gdp_60,
+                         ln_inv_gdp = log(inv_gdp/100),
+                         non_oil = factor(non_oil),
+                         intermediate = factor(intermediate),
+                         oecd = factor(oecd),
+                         ln_ndg = log(pop_growth_60_85/100 + delta_gamma),
+                         ln_school = log(school/100)) %>% 
+                  select(country, ln_gdp_85, ln_gdp_60, ln_inv_gdp, 
+                         non_oil, intermediate, oecd,
+                         ln_ndg, ln_school, gdp_growth_60_85, ln_gdp_growth)
+
+```
+
+## Samples
+
+```{r}
+oecd         <- mrw_data %>% 
+                    filter(oecd == 1)
+intermediate <- mrw_data %>% 
+                    filter(intermediate == 1)
+non_oil      <- mrw_data %>% 
+                    filter(non_oil == 1)
+```
+
+## Table 1
+
+### Unrestricted Regression
+
+```{r}
+solow_oecd <- lm(ln_gdp_85 ~ ln_inv_gdp + ln_ndg, data = oecd)
+solow_int  <- lm(ln_gdp_85 ~ ln_inv_gdp + ln_ndg, data = intermediate)
+solow_noil <- lm(ln_gdp_85 ~ ln_inv_gdp + ln_ndg, data = non_oil)
+```
+
+#### Regression Table
+
+```{r, results = 'asis'}
+stargazer(solow_noil, solow_int, solow_oecd, type = "html",
+          column.labels = c("Non-Oil", 
+                            "Intermediate", 
+                            "OECD"),
+          covariate.labels = c("log(I / GDP)", 
+                               "log(n+delta+g)", 
+                               "Constant"), 
+          dep.var.labels = "Log(GDP) 1985",
+          omit.stat = c("f", 
+                        "rsq", 
+                        "ser"),
+          title = "Table 1 - Unrestricted Models",
+          style = "qje")
+```
+
+
+### Restricted Regression
+
+```{r}
+solow_oecd_r <- lm(ln_gdp_85 ~ I(ln_inv_gdp - ln_ndg), data = oecd)
+solow_int_r  <- lm(ln_gdp_85 ~ I(ln_inv_gdp - ln_ndg), data = intermediate)
+solow_noil_r <- lm(ln_gdp_85 ~ I(ln_inv_gdp - ln_ndg), data = non_oil)
+```
+
+#### Regression Table
+
+```{r, results = 'asis'}
+stargazer(solow_noil_r, solow_int_r, solow_oecd_r, type = "html",
+          column.labels = c("Non-Oil", 
+                            "Intermediate", 
+                            "OECD"),
+          covariate.labels = c("log(I / GDP)- log(n+delta+g)", 
+                               "Constant"), 
+          dep.var.labels = "Log(GDP) 1985",
+          omit.stat = c("f", 
+                        "rsq", 
+                        "ser"),
+          title = "Table 1 - Restricted Models",
+          style = "qje")
+```
+
+### Test of Restriction
+
+```{r}
+linearHypothesis(solow_oecd, "ln_inv_gdp = - ln_ndg")
+linearHypothesis(solow_noil, "ln_inv_gdp = - ln_ndg")
+linearHypothesis(solow_int, "ln_inv_gdp = - ln_ndg")
+```
+
+### Implied alpha 
+
+
+```{r}
+alpha_solow_noil <- round(coef(solow_noil_r)[2] / (1 + coef(solow_noil_r)[2]), digits = 2)
+print(paste("Implied Alpha (Non oil):", alpha_solow_noil))
+
+alpha_solow_int <- round(coef(solow_int_r)[2] / (1 + coef(solow_int_r)[2]), digits = 2)
+print(paste("Implied Alpha (Intermediate):", alpha_solow_int))
+
+alpha_solow_oecd <- round(coef(solow_oecd_r)[2] / (1 + coef(solow_oecd_r)[2]), digits = 2)
+print(paste("Implied Alpha (OECD):", alpha_solow_oecd))
+```
+
+## Table 2
+
+### Unrestricted Model
+```{r}
+augsolow_oecd <- lm(ln_gdp_85 ~ ln_inv_gdp + ln_ndg + ln_school, data = oecd)
+augsolow_int  <- lm(ln_gdp_85 ~ ln_inv_gdp + ln_ndg + ln_school, data = intermediate)
+augsolow_noil <- lm(ln_gdp_85 ~ ln_inv_gdp + ln_ndg + ln_school, data = non_oil)
+```
+
+#### Regression Table
+```{r, results = 'asis'}
+stargazer(augsolow_noil, augsolow_int, augsolow_oecd, type = "html",
+          column.labels = c("Non-Oil", 
+                            "Intermediate", 
+                            "OECD"),
+          covariate.labels = c("log(I / GDP)", 
+                               "log(n+delta+g)",
+                               "log(school)",
+                               "Constant"), 
+          dep.var.labels = "Log(GDP) 1985",
+          omit.stat = c("f", 
+                        "rsq", 
+                        "ser"),
+          title = "Table 2 - Unrestricted Models",
+          style = "qje")
+```
+
+#### Restricted Regression
+
+```{r}
+augsolow_oecd_r <- lm(ln_gdp_85 ~ I(ln_inv_gdp - ln_ndg) + I(ln_school - ln_ndg), data = oecd)
+augsolow_int_r  <- lm(ln_gdp_85 ~ I(ln_inv_gdp - ln_ndg) + I(ln_school - ln_ndg), data = intermediate)
+augsolow_noil_r <- lm(ln_gdp_85 ~ I(ln_inv_gdp - ln_ndg) + I(ln_school - ln_ndg), data = non_oil)
+```
+
+### Regression Table
+```{r, results = 'asis'}
+stargazer(augsolow_noil_r, augsolow_int_r, augsolow_oecd_r, type = "html",
+          column.labels = c("Non-Oil", 
+                            "Intermediate", 
+                            "OECD"),
+          covariate.labels = c("log(I / GDP)- log(n+delta+g)", 
+                               "log(school)- log(n+delta+g)",
+                               "Constant"), 
+          dep.var.labels = "Log(GDP) 1985",
+          omit.stat = c("f", 
+                        "rsq", 
+                        "ser"),
+          title = "Table 2 - Restricted Models",
+          style = "qje")
+```
+
+### Test of Restriction
+```{r}
+linearHypothesis(augsolow_oecd, "ln_inv_gdp + ln_ndg + ln_school = 0")
+linearHypothesis(augsolow_noil, "ln_inv_gdp + ln_ndg + ln_school = 0")
+linearHypothesis(augsolow_int, "ln_inv_gdp + ln_ndg + ln_school = 0")
+```
+
+## Table 3
+
+```{r}
+ucc_noil <- lm(ln_gdp_growth ~ ln_gdp_60, data = non_oil)
+ucc_int  <- lm(ln_gdp_growth ~ ln_gdp_60, data = intermediate)
+ucc_oecd <- lm(ln_gdp_growth ~ ln_gdp_60, data = oecd)
+```
+
+### Regression Table
+```{r, results = 'asis'}
+stargazer(ucc_noil, ucc_int, ucc_oecd, type = "html",
+          column.labels = c("Non-Oil", 
+                            "Intermediate", 
+                            "OECD"),
+          covariate.labels = c("log(GDP '60)",
+                              "Constant"),
+          dep.var.labels = "Log(GDP '85) - Log(GDP '60)",
+          omit.stat = c("f", 
+                        "rsq", 
+                        "ser"),
+          title = "Table 3 - Unconditional Convergence",
+          style = "qje")
+```
+
+## Table 4
+```{r}
+cc_noil <- lm(ln_gdp_growth ~ ln_gdp_60 + ln_inv_gdp + ln_ndg, data = non_oil)
+cc_int  <- lm(ln_gdp_growth ~ ln_gdp_60 + ln_inv_gdp + ln_ndg, data = intermediate)
+cc_oecd <- lm(ln_gdp_growth ~ ln_gdp_60 + ln_inv_gdp + ln_ndg, data = oecd)
+```
+
+### Regression Table
+```{r, results = 'asis'}
+stargazer(cc_noil, cc_int, cc_oecd, type = "html",
+          column.labels = c("Non-Oil", 
+                            "Intermediate", 
+                            "OECD"),
+          covariate.labels = c("log(GDP '60)",
+                               "log(I / GDP)", 
+                               "log(n+delta+g)",
+                               "Constant"),
+          dep.var.labels = "Log(GDP '85) - Log(GDP '60)",
+          omit.stat = c("f", 
+                        "rsq", 
+                        "ser"),
+          title = "Table 4 - Conditional Convergence",
+          style = "qje")
+```
+
+## Table 5
+
+```{r}
+augcc_noil <- lm(ln_gdp_growth ~ ln_gdp_60 + ln_inv_gdp + ln_ndg + ln_school, data = non_oil)
+augcc_int  <- lm(ln_gdp_growth ~ ln_gdp_60 + ln_inv_gdp + ln_ndg + ln_school, data = intermediate)
+augcc_oecd <- lm(ln_gdp_growth ~ ln_gdp_60 + ln_inv_gdp + ln_ndg + ln_school, data = oecd)
+```
+
+### Regression Table
+```{r, results = 'asis'}
+stargazer(augcc_noil, augcc_int, augcc_oecd, type = "html",
+          column.labels = c("Non-Oil", 
+                            "Intermediate", 
+                            "OECD"),
+          covariate.labels = c("log(GDP '60)",
+                               "log(I / GDP)", 
+                               "log(n+delta+g)",
+                               "log(school)",
+                               "Constant"),
+          dep.var.labels = "Log(GDP '85) - Log(GDP '60)",
+          omit.stat = c("f", 
+                        "rsq", 
+                        "ser"),
+          title = "Table 5 - Augmented Conditional Convergence",
+          style = "qje")
+```
+
+## Table 6
+```{r}
+augcc_noil_r <- lm(ln_gdp_growth ~ ln_gdp_60 + I(ln_inv_gdp - ln_ndg) + I(ln_school - ln_ndg), data = non_oil)
+augcc_int_r  <- lm(ln_gdp_growth ~ ln_gdp_60 + I(ln_inv_gdp - ln_ndg) + I(ln_school - ln_ndg), data = intermediate)
+augcc_oecd_r <- lm(ln_gdp_growth ~ ln_gdp_60 + I(ln_inv_gdp - ln_ndg) + I(ln_school - ln_ndg), data = oecd)
+```
+
+### Regression Table
+```{r, results = 'asis'}
+stargazer(augcc_noil_r, augcc_int_r, augcc_oecd_r, type = "html",
+          column.labels = c("Non-Oil", 
+                            "Intermediate", 
+                            "OECD"),
+          covariate.labels = c("log(GDP '60)",
+                               "log(I / GDP) - log(n+delta+g)", 
+                               "log(school) - log(n+delta+g)",
+                               "Constant"),
+          dep.var.labels = "Log(GDP '85) - Log(GDP '60)",
+          omit.stat = c("f", 
+                        "rsq", 
+                        "ser"),
+          title = "Table 6 - Restricted Augmented Conditional Convergence",
+          style = "qje")
+```
+
+### Test of Restriction
+```{r}
+linearHypothesis(augcc_oecd, "ln_inv_gdp + ln_ndg + ln_school = 0")
+linearHypothesis(augcc_noil, "ln_inv_gdp + ln_ndg + ln_school = 0")
+linearHypothesis(augcc_int, "ln_inv_gdp + ln_ndg + ln_school = 0")
+```
+
+## Figure 1
+
+Notice that the actual axis labels in the paper are a little misleading. 
+These actually replicate the figure.
+
+### Top Panel
+
+```{r}
+ggplot(intermediate, aes(x = ln_gdp_60, y = ln_gdp_growth)) +
+    geom_point(shape = 1) +
+    geom_smooth(method=lm, se=FALSE, color = "red") +
+    theme_bw() +
+    ggtitle("A: Unconditional") +
+    ylab("Log Growth rate: 1960 - 85") +
+    xlab("Log output per working age adult: 1960")
+```
+
+### Middle Panel
+
+Takes a little more work, we need the residuals 
+
+```{r}
+y2 <- lm(ln_gdp_growth ~  ln_inv_gdp + ln_ndg, data = intermediate)$residuals
+x2 <- lm(ln_gdp_60 ~  ln_inv_gdp + ln_ndg, data = intermediate)$residuals
+
+panel_b <- tibble(y2, x2)
+```
+
+Now the plot:
+
+```{r}
+ggplot(panel_b, aes(x = x2, y = y2)) +
+    geom_point(shape = 1) +
+    geom_smooth(method=lm, se=FALSE, color = "red") +
+    theme_bw() +
+    ggtitle("B: Conditional on Saving and Population Growth") +
+    ylab("Log Growth rate: 1960 - 85") +
+    xlab("Log output per working age adult: 1960")
+```
+
+### Bottom Panel
+Again need the residuals 
+
+```{r}
+y3 <- lm(ln_gdp_growth ~  ln_inv_gdp + ln_ndg + ln_school, data = intermediate)$residuals
+x3 <- lm(ln_gdp_60 ~  ln_inv_gdp + ln_ndg + ln_school, data = intermediate)$residuals
+
+panel_c <- tibble(y3, x3)
+```
+
+Now the plot:
+
+```{r}
+ggplot(panel_c, aes(x = x3, y = y3)) +
+    geom_point(shape = 1) +
+    geom_smooth(method=lm, se=FALSE, color = "red") +
+    theme_bw() +
+    ggtitle("C: Conditional on Saving and Population Growth and Human Capital") +
+    ylab("Log Growth rate: 1960 - 85") +
+    xlab("Log output per working age adult: 1960")
+```
