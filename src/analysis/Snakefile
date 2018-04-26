@@ -16,17 +16,21 @@ subworkflow data_mgt:
     snakefile: "../../" + config["src_data_mgt"] + "Snakefile"
 
 # --- Build Rules --- #
+rule estimate_models:
+    input:
+        expand(config["out_analysis"] + "ols_{iSubset}.rds",
+                iSubset = DATA_SUBSET)
 
 rule ols_model:
     input:
         script = config["src_analysis"] + "estimate_ols_model.R",
         data   = data_cleaning(config["out_data"] + "mrw_complete.csv"),
         model  = config["src_model_specs"] + "solow.json",
-        subset = config["src_model_specs"] + "nonoil.json"
+        subset = config["src_model_specs"] + "{subset}.json"
     output:
-        model_est = config["out_analysis"] + "ols.rds",
+        model_est = config["out_analysis"] + "ols_{subset}.rds",
     log:
-        config["log"] + "analysis/ols_model.txt"
+        config["log"] + "analysis/ols_{subset}.txt"
     shell:
         "{runR} {input.script} --data {input.data} --model {input.model} \
             --subset {input.subset} --out {output.model_est} \

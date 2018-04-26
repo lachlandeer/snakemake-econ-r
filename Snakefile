@@ -8,7 +8,7 @@ import glob, os
 configfile: "config.yaml"
 
 # --- Dictionaries --- #
-
+DATA_SUBSET = ['nonoil', 'intermediate', 'oecd']
 
 # --- Sub Workflows --- #
 subworkflow data_cleaning:
@@ -43,7 +43,8 @@ logAll = "2>&1"
 
 rule all:
     input:
-        model = analysis(config["out_analysis"] + "ols.rds")
+        model = analysis(expand(config["out_analysis"] + "ols_{iSubset}.rds",
+                            iSubset = DATA_SUBSET))
         #data = data_cleaning(config["out_data"] + "mrw_complete.csv")
 
 # --- Packrat Rules --- #
