@@ -35,9 +35,15 @@ subworkflow slides:
    workdir: config["src_slides"]
    snakefile: config["src_slides"] + "Snakefile"
 
+# --- Variable Declarations ---- #
+runR = "Rscript --no-save --no-restore --verbose"
+logAll = "2>&1"
+
 # --- Main Build Rules --- #
 
-# To be Done
+rule all:
+    input:
+        renamed = data_cleaning(config["out_data"] + "mrw_renamed.csv")
 
 # --- Packrat Rules --- #
 

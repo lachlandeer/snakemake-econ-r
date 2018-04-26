@@ -8,6 +8,19 @@ import glob, os
 
 configfile: "config.yaml"
 
+
 # --- Dictionaries --- #
 
 # --- Build Rules --- #
+
+rule rename_vars:
+    input:
+        script = config["src_data_mgt"] + "rename_variables.R",
+        data   = config["src_data"] + "mrw.dta",
+    output:
+        data = config["out_data"] + "mrw_renamed.csv",
+    log:
+        config["log"] + "data_cleaning/rename_variables.txt"
+    shell:
+        "{runR} {input.script} --data {input.data} --out {output.data} \
+            > {log} {logAll}"
