@@ -13,6 +13,20 @@ configfile: "config.yaml"
 
 # --- Build Rules --- #
 
+rule gen_regression_vars:
+    input:
+        script = config["src_data_mgt"] + "gen_reg_vars.R",
+        data   = config["out_data"] + "mrw_renamed.csv",
+        params = config["src_model_specs"] + "solow_param.json",
+    output:
+        data = config["out_data"] + "mrw_complete.csv",
+    log:
+        config["log"] + "data_cleaning/gen_reg_vars.txt"
+    shell:
+        "{runR} {input.script} --data {input.data} --param {input.params} \
+            --out {output.data} \
+            > {log} {logAll}"
+
 rule rename_vars:
     input:
         script = config["src_data_mgt"] + "rename_variables.R",

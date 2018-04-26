@@ -43,7 +43,7 @@ logAll = "2>&1"
 
 rule all:
     input:
-        renamed = data_cleaning(config["out_data"] + "mrw_renamed.csv")
+        data = data_cleaning(config["out_data"] + "mrw_complete.csv")
 
 # --- Packrat Rules --- #
 
