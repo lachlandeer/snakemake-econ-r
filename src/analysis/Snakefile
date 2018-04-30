@@ -12,25 +12,27 @@ configfile: "config.yaml"
 
 # --- Sub Workflows --- #
 subworkflow data_mgt:
-    workdir: "../../" + config["ROOT"]
-    snakefile: "../../" + config["src_data_mgt"] + "Snakefile"
+    workdir: config["sub2root"] + config["ROOT"]
+    snakefile: config["sub2root"] + config["src_data_mgt"] + "Snakefile"
 
 # --- Build Rules --- #
 rule estimate_models:
     input:
-        expand(config["out_analysis"] + "ols_{iSubset}.rds",
-                iSubset = DATA_SUBSET)
+        expand(config["out_analysis"] +
+                            "ols_{iModel}_{iSubset}.rds",
+                            iModel = MODELS,
+                            iSubset = DATA_SUBSET)
 
 rule ols_model:
     input:
         script = config["src_analysis"] + "estimate_ols_model.R",
-        data   = data_cleaning(config["out_data"] + "mrw_complete.csv"),
-        model  = config["src_model_specs"] + "model_solow.json",
-        subset = config["src_model_specs"] + "{subset}.json"
+        data   = data_mgt(config["out_data"] + "mrw_complete.csv"),
+        model  = config["src_model_specs"] + "{iModel}.json",
+        subset = config["src_data_specs"] + "{iSubset}.json"
     output:
-        model_est = config["out_analysis"] + "ols_{subset}.rds",
+        model_est = config["out_analysis"] + "{iModel}_ols_{iSubset}.rds",
     log:
-        config["log"] + "analysis/ols_{subset}.txt"
+        config["log"] + "analysis/{iModel}_ols_{iSubset}.txt"
     shell:
         "{runR} {input.script} --data {input.data} --model {input.model} \
             --subset {input.subset} --out {output.model_est} \

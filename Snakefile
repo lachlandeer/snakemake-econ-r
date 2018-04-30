@@ -10,12 +10,15 @@ configfile: "config.yaml"
 # --- Dictionaries --- #
 # Identify subset conditions for data
 DATA_SUBSET = [os.path.splitext(os.path.basename(iFile))[0]
-                    for iFile in glob.glob(config["src_model_specs"] +
-                                            "subset*")]
+                    for iFile in glob.glob(config["src_data_specs"] +
+                                            "*.json")]
 
+MODELS = [os.path.splitext(os.path.basename(iFile))[0]
+                    for iFile in glob.glob(config["src_model_specs"] +
+                                            "model_*.json")]
 
 # --- Sub Workflows --- #
-subworkflow data_cleaning:
+subworkflow data_mgt:
    workdir:   config["ROOT"]
    snakefile: config["src_data_mgt"] + "Snakefile"
 
@@ -47,9 +50,11 @@ logAll = "2>&1"
 
 rule all:
     input:
-        model = analysis(expand(config["out_analysis"] + "ols_{iSubset}.rds",
+        model = analysis(expand(config["out_analysis"] +
+                            "{iModel}_ols_{iSubset}.rds",
+                            iModel = MODELS,
                             iSubset = DATA_SUBSET))
-        #data = data_cleaning(config["out_data"] + "mrw_complete.csv")
+        #data = data_mgt(config["out_data"] + "mrw_complete.csv")
 
 # --- Packrat Rules --- #
 
