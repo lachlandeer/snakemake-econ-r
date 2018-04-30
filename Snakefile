@@ -8,7 +8,12 @@ import glob, os
 configfile: "config.yaml"
 
 # --- Dictionaries --- #
-DATA_SUBSET = ['nonoil', 'intermediate', 'oecd']
+# Identify subset conditions for data
+DATA_SUBSET = [os.path.splitext(os.path.basename(iFile))[0]
+                    for iFile in glob.glob(config["src_model_specs"] +
+                                            "subset*")
+                    ]
+
 
 # --- Sub Workflows --- #
 subworkflow data_cleaning:
