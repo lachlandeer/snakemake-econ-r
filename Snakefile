@@ -11,8 +11,7 @@ configfile: "config.yaml"
 # Identify subset conditions for data
 DATA_SUBSET = [os.path.splitext(os.path.basename(iFile))[0]
                     for iFile in glob.glob(config["src_model_specs"] +
-                                            "subset*")
-                    ]
+                                            "subset*")]
 
 
 # --- Sub Workflows --- #
