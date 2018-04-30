@@ -25,7 +25,7 @@ rule ols_model:
     input:
         script = config["src_analysis"] + "estimate_ols_model.R",
         data   = data_cleaning(config["out_data"] + "mrw_complete.csv"),
-        model  = config["src_model_specs"] + "solow.json",
+        model  = config["src_model_specs"] + "model_solow.json",
         subset = config["src_model_specs"] + "{subset}.json"
     output:
         model_est = config["out_analysis"] + "ols_{subset}.rds",
