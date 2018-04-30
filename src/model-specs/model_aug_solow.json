@@ -1,0 +1,4 @@
+{
+    "DEPVAR": "ln_gdp_85",
+    "EXOG": "ln_inv_gdp + ln_ndg + ln_school"
+}
