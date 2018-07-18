@@ -17,6 +17,11 @@ MODELS = [os.path.splitext(os.path.basename(iFile))[0]
                     for iFile in glob.glob(config["src_model_specs"] +
                                             "model_*.json")]
 
+PLOTS = ["unconditional_convergence",
+         "conditional_convergence",
+         "aug_conditional_convergence"
+        ]
+
 # --- Sub Workflows --- #
 subworkflow data_mgt:
    workdir:   config["ROOT"]
@@ -54,13 +59,9 @@ rule all:
                             "{iModel}_ols_{iSubset}.rds",
                             iModel = MODELS,
                             iSubset = DATA_SUBSET)),
-        ucc_plt = figures(config["out"] +
-                        "figures/unconditional_convergence.pdf"),
-        cc_plt = figures(config["out"] +
-                        "figures/conditional_convergence.pdf"),
-        aug_cc_plt = figures(config["out"] +
-                        "figures/aug_conditional_convergence.pdf")
-        #data = data_mgt(config["out_data"] + "mrw_complete.csv")
+        figs  = figures(expand(config["out_figures"] +
+                            "{iPlot}.pdf",
+                            iPlot = PLOTS)),
 
 # --- Packrat Rules --- #
 
