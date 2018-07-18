@@ -57,7 +57,9 @@ rule all:
         ucc_plt = figures(config["out"] +
                         "figures/unconditional_convergence.pdf"),
         cc_plt = figures(config["out"] +
-                        "figures/conditional_convergence.pdf")
+                        "figures/conditional_convergence.pdf"),
+        aug_cc_plt = figures(config["out"] +
+                        "figures/aug_conditional_convergence.pdf")
         #data = data_mgt(config["out_data"] + "mrw_complete.csv")
 
 # --- Packrat Rules --- #
