@@ -39,6 +39,11 @@ Source: CRAN
 Version: 1.77
 Hash: 08f1f60e1038957030bcd9f4a58d22d8
 
+Package: XML
+Source: CRAN
+Version: 3.98-1.11
+Hash: 93ca736e34d01f5952dc770fbfa5fa62
+
 Package: abind
 Source: CRAN
 Version: 1.4-5
@@ -142,11 +147,17 @@ Version: 0.2.0
 Hash: e5a3b0b96a39f5581467b0c6366f7408
 Requires: magrittr, tibble
 
+Package: getopt
+Source: CRAN
+Version: 1.20.2
+Hash: 38b0f8029cbb2339f800ffa5bdd19b59
+
 Package: ggplot2
 Source: CRAN
-Version: 2.2.1
-Hash: 46e5cb78836848aa44655e577433f54b
-Requires: digest, gtable, lazyeval, plyr, reshape2, scales, tibble
+Version: 3.0.0
+Hash: 8332448b76ff31472a1bf6dd31fcddb1
+Requires: digest, gtable, lazyeval, plyr, reshape2, rlang, scales,
+    tibble, viridisLite, withr
 
 Package: glue
 Source: CRAN
@@ -252,6 +263,12 @@ Version: 4.0.17
 Hash: f3c28cd5e2149befa16c961e6fce6a1a
 Requires: Rcpp
 
+Package: optparse
+Source: CRAN
+Version: 1.4.4
+Hash: 2c2d6dac99ebdc3562acb26901033bb1
+Requires: getopt
+
 Package: packrat
 Source: CRAN
 Version: 0.4.9-1
@@ -332,10 +349,21 @@ Version: 0.5.10
 Hash: 98b9636341c1979dd8f0ea93a9922384
 Requires: curl, data.table, haven, openxlsx, readxl, tibble
 
+Package: rjson
+Source: CRAN
+Version: 0.2.15
+Hash: def074f38d0cff3b597649ee6f976128
+
 Package: rlang
 Source: CRAN
 Version: 0.2.0
 Hash: 647e2e50a72557d1a770dcd6701e562b
+
+Package: rlist
+Source: CRAN
+Version: 0.4.6.1
+Hash: 549b1d78af0592d937069501b9b0ba0b
+Requires: XML, data.table, jsonlite, yaml
 
 Package: rmarkdown
 Source: CRAN
@@ -351,19 +379,11 @@ Hash: a25c3f70c166fb3fbabc410eb32b6366
 Requires: backports
 
 Package: scales
-Source: github
-Version: 0.5.0.9000
-Hash: 1c1112cf868be8b6798a15e89d77e113
+Source: CRAN
+Version: 0.5.0
+Hash: de72bbfa723acfaa28bb99788a303987
 Requires: R6, RColorBrewer, Rcpp, dichromat, labeling, munsell, plyr,
     viridisLite
-GithubRepo: scales
-GithubUsername: hadley
-GithubRef: master
-GithubSha1: d76791529be802ff84bf9a343347335d58e03b1f
-RemoteHost: https://api.github.com
-RemoteRepo: scales
-RemoteUsername: hadley
-RemoteSha: d76791529be802ff84bf9a343347335d58e03b1f
 
 Package: skimr
 Source: CRAN
@@ -421,6 +441,11 @@ Package: viridisLite
 Source: CRAN
 Version: 0.3.0
 Hash: 78bb072c4f9e729a283d4c40ec93f9c6
+
+Package: withr
+Source: CRAN
+Version: 2.1.2
+Hash: d534108bcd5f34ec73e9eb523751ba20
 
 Package: yaml
 Source: CRAN
