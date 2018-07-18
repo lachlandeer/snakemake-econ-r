@@ -54,8 +54,10 @@ rule all:
                             "{iModel}_ols_{iSubset}.rds",
                             iModel = MODELS,
                             iSubset = DATA_SUBSET)),
-        ucc_plt= figures(config["out"] +
-                        "figures/unconditional_convergence.pdf")
+        ucc_plt = figures(config["out"] +
+                        "figures/unconditional_convergence.pdf"),
+        cc_plt = figures(config["out"] +
+                        "figures/conditional_convergence.pdf")
         #data = data_mgt(config["out_data"] + "mrw_complete.csv")
 
 # --- Packrat Rules --- #
