@@ -24,7 +24,7 @@ rule aug_cond_conv:
         data   = data_mgt(config["out_data"] + "mrw_complete.csv"),
         subset = config["src_data_specs"] + "subset_intermediate.json"
     output:
-        fig = config["out"] + "figures/aug_conditional_convergence.pdf",
+        fig = config["out_figures"] + "aug_conditional_convergence.pdf",
     log:
         config["log"] + "figures/aug_conditional_convergence.txt"
     shell:
@@ -41,7 +41,7 @@ rule cond_conv:
         data   = data_mgt(config["out_data"] + "mrw_complete.csv"),
         subset = config["src_data_specs"] + "subset_intermediate.json"
     output:
-        fig = config["out"] + "figures/conditional_convergence.pdf",
+        fig = config["out_figures"] + "conditional_convergence.pdf",
     log:
         config["log"] + "figures/conditional_convergence.txt"
     shell:
@@ -58,7 +58,7 @@ rule uncond_conv:
         data   = data_mgt(config["out_data"] + "mrw_complete.csv"),
         subset = config["src_data_specs"] + "subset_intermediate.json"
     output:
-        fig = config["out"] + "figures/unconditional_convergence.pdf",
+        fig = config["out_figures"] + "unconditional_convergence.pdf",
     log:
         config["log"] + "figures/unconditional_convergence.txt"
     shell:
