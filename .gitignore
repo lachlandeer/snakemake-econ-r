@@ -1,5 +1,6 @@
 .Rproj.user
 .Rhistory
+Rplots*
 packrat/lib*/
 logs/*
 packrat/src/*
