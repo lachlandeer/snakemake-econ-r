@@ -1,4 +1,4 @@
 {
-    "DEPVAR": "ln_gdp_85",
+    "DEPVAR": "ln_gdp_growth",
     "EXOG": "ln_gdp_60 + I(ln_inv_gdp - ln_ndg) + I(ln_school - ln_ndg)"
 }
