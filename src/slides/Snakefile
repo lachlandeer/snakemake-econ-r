@@ -1,13 +1,36 @@
-# subworlflow: slides
+# subworkflow: slides
 #
-# Contributors: YOUR NAME
+# Contributors: @lachlandeer, @julianlanger
 
 import glob, os
 
 # --- Importing Configuration Files --- #
 
-configfile: "config.yaml"
+configfile: "../../" "config.yaml"
 
-# --- Dictionaries --- #
+ROOT = config["sub2root"]
+HERE = ROOT + config["src_slides"]
+LIB  = ROOT + config["src_lib"]
+OUT  = config["out"]
 
 # --- Build Rules --- #
+
+rule slides2root:
+    input:
+        pdf  = ROOT + config["out_slides"] + PROJ_NAME + "_slides.pdf"
+    output:
+        pdf  = ROOT + PROJ_NAME + ".pdf",
+    shell:
+        "cp {input.pdf} {output.pdf}"
+
+rule build_beamer:
+    input:
+        runner    = LIB + "knit_beamer.R",
+        rmd_file  = HERE + "slides.Rmd",
+    output:
+        pdf = ROOT + config["out_slides"] + PROJ_NAME + "_slides.pdf"
+    log:
+        ROOT + config["log"]+ "slides/slides.Rout"
+    shell:
+        "{runR} {input.runner} {input.rmd_file} {output.pdf} \
+            > {log} {logAll}"
