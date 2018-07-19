@@ -19,7 +19,7 @@ rule slides2root:
     input:
         pdf  = ROOT + config["out_slides"] + PROJ_NAME + "_slides.pdf"
     output:
-        pdf  = ROOT + PROJ_NAME + ".pdf",
+        pdf  = ROOT + PROJ_NAME + "_slides.pdf",
     shell:
         "cp {input.pdf} {output.pdf}"
 

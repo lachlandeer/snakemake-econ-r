@@ -53,7 +53,7 @@ logAll = "2>&1"
 rule all:
     input:
         paper_pdf = paper(config["sub2root"] + PROJ_NAME + ".pdf"),
-        beamer_slides = slides(config["sub2root"] + config["out_slides"] +
+        beamer_slides = slides(config["sub2root"] +
                                 PROJ_NAME + "_slides.pdf"),
 
 # --- Packrat Rules --- #
