@@ -70,6 +70,8 @@ rule all:
                     "tab03_ucc_solow.tex"),
         tab04 = tables(config["out_tables"] +
                     "tab04_cc_solow.tex"),
+        tab05 = tables(config["out_tables"] +
+                    "tab05_cc_aug_solow.tex"),
 
 # --- Packrat Rules --- #
 

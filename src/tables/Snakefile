@@ -17,6 +17,28 @@ subworkflow analysis:
 
 # --- Build Rules --- #
 
+## aug_conditional_convergence:
+rule aug_conditional_convergence:
+    input:
+        script = config["src_tables"] + "tab05_cc_aug_solow.R",
+        models = analysis(expand(config["out_analysis"] +
+                            "{iModel}_ols_{iSubset}.rds",
+                            iModel = MODELS,
+                            iSubset = DATA_SUBSET)),
+    params:
+        filepath   = config["out_analysis"],
+        model_expr = "model_aug_cc_ols*.rds"
+    output:
+        table = config["out_tables"] + "tab05_cc_aug_solow.tex",
+    log:
+        config["log"] + "tables/tab05_cc_aug_solow.txt"
+    shell:
+        "{runR} {input.script} \
+            --filepath {params.filepath} \
+            --models {params.model_expr} \
+            --out {output.table} \
+            > {log} {logAll}"
+
 ## conditional_convergence:
 rule conditional_convergence:
     input:
