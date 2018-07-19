@@ -33,7 +33,7 @@ logAll = "2>&1"
 
 rule all:
     input:
-        pdf  = "_book/" + PROJ_NAME + ".pdf",
+        pdf  = "_book/my_article.pdf",
     output:
         pdf  = config["sub2root"] + PROJ_NAME + ".pdf",
     shell:
@@ -48,7 +48,7 @@ rule pdf:
         #tables     = TABLES,
         runner     = "build_pdfbook.R"
     output:
-        "_book/" + PROJ_NAME + ".pdf"
+        "_book/" + "my_article.pdf"
     log:
         "../../" + config["log"] + "paper/build_pdf.Rout"
     shell:

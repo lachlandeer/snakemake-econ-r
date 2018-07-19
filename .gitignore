@@ -7,3 +7,4 @@ packrat/src/*
 .snakemake
 out/*
 _book
+*.pdf
