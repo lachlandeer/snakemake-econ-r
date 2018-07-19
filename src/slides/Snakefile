@@ -13,6 +13,15 @@ HERE = ROOT + config["src_slides"]
 LIB  = ROOT + config["src_lib"]
 OUT  = config["out"]
 
+# --- Sub Workflow Dependencies --- #
+subworkflow figures:
+    workdir:  ROOT + config["ROOT"]
+    snakefile: ROOT + config["src_figures"] + "Snakefile"
+
+subworkflow tables:
+    workdir:   ROOT + config["ROOT"]
+    snakefile: ROOT + config["src_tables"] + "Snakefile"
+
 # --- Build Rules --- #
 
 ## slides2root:    move slides to root directory
