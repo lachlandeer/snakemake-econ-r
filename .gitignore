@@ -6,3 +6,4 @@ logs/*
 packrat/src/*
 .snakemake
 out/*
+_book
