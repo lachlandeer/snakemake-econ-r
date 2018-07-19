@@ -1,6 +1,6 @@
-# subworlflow: tables
+# subworkflow: tables
 #
-# Contributors: YOUR NAME
+# Contributors: @lachlandeer, @julianlanger
 
 import glob, os
 

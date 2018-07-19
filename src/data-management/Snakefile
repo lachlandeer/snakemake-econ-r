@@ -1,6 +1,6 @@
-# subworlflow: data-management
+# subworkflow: data-management
 #
-# Contributors: YOUR NAME
+# Contributors: @lachlandeer, @julianlanger
 
 import glob, os
 

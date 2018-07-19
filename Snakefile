@@ -1,5 +1,5 @@
-# Main Workflow - YOUR PROJECT NAME HERE
-# Contributors: YOUR GITHUB HANDLE
+# Main Workflow - MRW Replication
+# Contributors: @lachlandeer, @julianlanger
 
 import glob, os
 
