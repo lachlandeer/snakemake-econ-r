@@ -22,6 +22,14 @@ PLOTS = ["unconditional_convergence",
          "aug_conditional_convergence"
         ]
 
+TABLES = [ "tab01_textbook_solow",
+            "tab02_augment_solow",
+            "tab03_ucc_solow",
+            "tab04_cc_solow",
+            "tab05_cc_aug_solow",
+            "tab06_cc_aug_solow_restr"
+        ]
+
 # --- Sub Workflows --- #
 subworkflow data_mgt:
    workdir:   config["ROOT"]
@@ -62,18 +70,9 @@ rule all:
         figs  = figures(expand(config["out_figures"] +
                             "{iPlot}.pdf",
                             iPlot = PLOTS)),
-        tab01 = tables(config["out_tables"] +
-                    "tab01_textbook_solow.tex"),
-        tab02 = tables(config["out_tables"] +
-                    "tab02_augment_solow.tex"),
-        tab03 = tables(config["out_tables"] +
-                    "tab03_ucc_solow.tex"),
-        tab04 = tables(config["out_tables"] +
-                    "tab04_cc_solow.tex"),
-        tab05 = tables(config["out_tables"] +
-                    "tab05_cc_aug_solow.tex"),
-        tab06 = tables(config["out_tables"] +
-                    "tab06_cc_aug_solow_restr.tex"),
+        tbls = tables(expand(config["out_tables"] +
+                            "{iTable}.tex",
+                            iTable = TABLES))
 
 # --- Packrat Rules --- #
 
