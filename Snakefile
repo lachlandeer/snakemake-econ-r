@@ -62,6 +62,8 @@ rule all:
         figs  = figures(expand(config["out_figures"] +
                             "{iPlot}.pdf",
                             iPlot = PLOTS)),
+        tab01 = tables(config["out_tables"] +
+                    "tab01_textbook_solow.tex")
 
 # --- Packrat Rules --- #
 
