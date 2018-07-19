@@ -26,7 +26,6 @@ subworkflow tables:
 # --- Dictionaries --- #
 RMD_FILES  = glob.glob("*.Rmd")
 YAML_FILES = glob.glob("*.yml")
-CSS_FILES  = glob.glob("*.css")
 BIB_FILES  = glob.glob("*.bib")
 TEX_FILES  = glob.glob("*.tex")
 
