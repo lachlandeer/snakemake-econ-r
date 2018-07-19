@@ -1,3 +1,19 @@
 ## Data
 
-We describe data
+One can visualize data with a figure:
+
+###  Simple Figures
+```{r, echo = FALSE, fig.align = "center", out.width = '.70\\linewidth', fig.cap = "No Support for Unconditional Convergence"}
+knitr::include_graphics("../../out/figures/unconditional_convergence.pdf")
+```
+
+\newpage
+
+### With Subfigures
+
+In progress
+<!-- ```{r fig-sub, echo = FALSE, fig.cap = 'Convergence Plots', fig.subcap=c('Unconditional Convergence', 'Conditonal Convergence', 'Conditonal Convergence - Augmented Model'), out.width='.75\\linewidth', fig.asp = 0.65, fig.ncol = 1}
+knitr::include_graphics("../../out/figures/unconditional_convergence.pdf")
+knitr::include_graphics("../../out/figures/conditional_convergence.pdf")
+knitr::include_graphics("../../out/figures/aug_conditional_convergence.pdf")
+``` -->
