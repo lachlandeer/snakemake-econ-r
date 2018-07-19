@@ -7,16 +7,16 @@
 import glob, os
 
 # --- Importing Configuration Files --- #
-configfile: "../../config.yaml"
+configfile: "../../" + "config.yaml"
 
 # --- Sub Workflow Dependencies --- #
 subworkflow figures:
-    workdir:   "../../" + config["ROOT"]
-    snakefile: "../../" + config["src_figures"] + "Snakefile"
+    workdir:  config["sub2root"] + config["ROOT"]
+    snakefile: config["sub2root"] + config["src_figures"] + "Snakefile"
 
 subworkflow tables:
-    workdir:   "../../" + config["ROOT"]
-    snakefile: "../../" + config["src_tables"] + "Snakefile"
+    workdir:   config["sub2root"] + config["ROOT"]
+    snakefile: config["sub2root"] + config["src_tables"] + "Snakefile"
 
 # --- Dictionaries --- #
 RMD_FILES  = glob.glob("*.Rmd")
@@ -24,7 +24,6 @@ YAML_FILES = glob.glob("*.yml")
 CSS_FILES  = glob.glob("*.css")
 BIB_FILES  = glob.glob("*.bib")
 TEX_FILES  = glob.glob("*.tex")
-CLS_FILES  = glob.glob("*.cls")
 
 # --- Variable Declarations ---- #
 runR = "Rscript --no-save --no-restore --verbose"
@@ -36,7 +35,7 @@ rule all:
     input:
         pdf  = "_book/" + PROJ_NAME + ".pdf",
     output:
-        pdf  = PROJ_NAME + ".pdf",
+        pdf  = config["sub2root"] + PROJ_NAME + ".pdf",
     shell:
         "cp {input.pdf} {output.pdf}"
 
@@ -47,7 +46,6 @@ rule pdf:
         biblo      = BIB_FILES,
         tex_style  = TEX_FILES,
         #tables     = TABLES,
-        #cls_file   = CLS_FILES,
         runner     = "build_pdfbook.R"
     output:
         "_book/" + PROJ_NAME + ".pdf"

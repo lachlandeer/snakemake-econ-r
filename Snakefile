@@ -67,7 +67,7 @@ logAll = "2>&1"
 
 rule all:
     input:
-        paper_pdf = paper(PROJ_NAME + ".pdf"),
+        paper_pdf = paper(config["sub2root"] + PROJ_NAME + ".pdf"),
         model = analysis(expand(config["out_analysis"] +
                             "{iModel}_ols_{iSubset}.rds",
                             iModel = MODELS,
