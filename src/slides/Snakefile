@@ -15,6 +15,7 @@ OUT  = config["out"]
 
 # --- Build Rules --- #
 
+## slides2root:    move slides to root directory
 rule slides2root:
     input:
         pdf  = ROOT + config["out_slides"] + PROJ_NAME + "_slides.pdf"
@@ -23,6 +24,7 @@ rule slides2root:
     shell:
         "cp {input.pdf} {output.pdf}"
 
+## build_beamer: knit beamer slides
 rule build_beamer:
     input:
         runner    = LIB + "knit_beamer.R",

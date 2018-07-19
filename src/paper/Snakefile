@@ -35,7 +35,8 @@ logAll = "2>&1"
 
 # --- Build Rules --- #
 
-rule all:
+## paper2root:   copy paper to root directory
+rule paper2root:
     input:
         pdf  = "_book/my_article.pdf",
     output:
@@ -43,7 +44,8 @@ rule all:
     shell:
         "cp {input.pdf} {output.pdf}"
 
-rule pdf:
+## knit_pdf: builds pdf using bookdown
+rule knit_pdf:
     input:
         text_files = RMD_FILES,
         yaml_files = YAML_FILES,

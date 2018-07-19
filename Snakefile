@@ -133,7 +133,7 @@ rule help_slides:
     shell:
         "sed -n 's/^##//p' {input}"
 
-## help_tables    : prints help comments for Snakefile in analysis directory
+## help_tables    : prints help comments for Snakefile in tables directory
 rule help_tables:
     input: config["src_tables"] + "Snakefile"
     shell:
