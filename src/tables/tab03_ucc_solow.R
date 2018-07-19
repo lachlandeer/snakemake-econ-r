@@ -1,4 +1,4 @@
-#' tab02_ucc_solow.R
+#' tab03_ucc_solow.R
 #'
 #' contributors: @lachlandeer, @julianlanger
 #'
