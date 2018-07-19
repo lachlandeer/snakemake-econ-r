@@ -29,6 +29,10 @@ rule build_beamer:
     input:
         runner    = LIB + "knit_beamer.R",
         rmd_file  = HERE + "slides.Rmd",
+        tables     = tables(config["out_tables"] +
+                        "tab03_ucc_solow.tex"),
+        figures = figures(config["out_figures"] +
+                            "unconditional_convergence.pdf"),
     output:
         pdf = ROOT + config["out_slides"] + PROJ_NAME + "_slides.pdf"
     log:

@@ -17,10 +17,29 @@ output:
     #keep_tex: TRUE
 ---
 
-## Slide 1
+## Motivation
 
-A first slide
+* Understanding & implementing workflows is hard
+* We provide a guide to one alternative, 'Snakemake'
 
-## Slide 2
+* Practical Example: Replicating Mankiw, Romer & Weil's 1992 QJE
 
-* a second slide
+## Another slide
+
+* Bullets
+    - Sub bullets
+    - *italic*
+    - **bold**
+
+1. Numbered Lists ...
+2. Can go like this
+
+## Adding a Table
+
+\input{../../out/tables/tab03_ucc_solow.tex}
+
+## Adding a Figure
+
+```{r, echo = FALSE, fig.align = "center", out.width = '.70\\linewidth', fig.cap = "No Support for Unconditional Convergence"}
+knitr::include_graphics("../../out/figures/unconditional_convergence.pdf")
+```
