@@ -63,7 +63,9 @@ rule all:
                             "{iPlot}.pdf",
                             iPlot = PLOTS)),
         tab01 = tables(config["out_tables"] +
-                    "tab01_textbook_solow.tex")
+                    "tab01_textbook_solow.tex"),
+        tab02 = tables(config["out_tables"] +
+                    "tab02_augment_solow.tex"),
 
 # --- Packrat Rules --- #
 

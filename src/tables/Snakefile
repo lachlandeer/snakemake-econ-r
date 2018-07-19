@@ -17,6 +17,51 @@ subworkflow analysis:
 
 # --- Build Rules --- #
 
+## unconditional_convergence:
+rule unconditional_convergence:
+    input:
+        script = config["src_tables"] + "tab03_ucc_solow.R",
+        models = analysis(expand(config["out_analysis"] +
+                            "{iModel}_ols_{iSubset}.rds",
+                            iModel = MODELS,
+                            iSubset = DATA_SUBSET)),
+    params:
+        filepath   = config["out_analysis"],
+        model_expr = "model_ucc*.rds"
+    output:
+        table = config["out_tables"] + "tab03_ucc_solow.tex",
+    log:
+        config["log"] + "tables/tab03_ucc_solow.txt"
+    shell:
+        "{runR} {input.script} \
+            --filepath {params.filepath} \
+            --models {params.model_expr} \
+            --out {output.table} \
+            > {log} {logAll}"
+
+## augment_solow: construct a table of estimates for augmented solow model
+rule augment_solow:
+    input:
+        script = config["src_tables"] + "tab02_augment_solow.R",
+        models = analysis(expand(config["out_analysis"] +
+                            "{iModel}_ols_{iSubset}.rds",
+                            iModel = MODELS,
+                            iSubset = DATA_SUBSET)),
+    params:
+        filepath   = config["out_analysis"],
+        model_expr = "model_aug_solow*.rds"
+    output:
+        table = config["out_tables"] + "tab02_augment_solow.tex",
+    log:
+        config["log"] + "tables/tab02_augment_solow.txt"
+    shell:
+        "{runR} {input.script} \
+            --filepath {params.filepath} \
+            --models {params.model_expr} \
+            --out {output.table} \
+            > {log} {logAll}"
+
+## textbook_solow: construct a table of estimates for textbook solow model
 rule textbook_solow:
     input:
         script = config["src_tables"] + "tab01_textbook_solow.R",
