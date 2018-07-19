@@ -9,14 +9,19 @@ import glob, os
 # --- Importing Configuration Files --- #
 configfile: "../../" + "config.yaml"
 
+ROOT = config["sub2root"]
+HERE = ROOT + config["src_paper"]
+LIB  = ROOT + config["src_lib"]
+OUT  = config["out"]
+
 # --- Sub Workflow Dependencies --- #
 subworkflow figures:
-    workdir:  config["sub2root"] + config["ROOT"]
-    snakefile: config["sub2root"] + config["src_figures"] + "Snakefile"
+    workdir:  ROOT + config["ROOT"]
+    snakefile: ROOT + config["src_figures"] + "Snakefile"
 
 subworkflow tables:
-    workdir:   config["sub2root"] + config["ROOT"]
-    snakefile: config["sub2root"] + config["src_tables"] + "Snakefile"
+    workdir:   ROOT + config["ROOT"]
+    snakefile: ROOT + config["src_tables"] + "Snakefile"
 
 # --- Dictionaries --- #
 RMD_FILES  = glob.glob("*.Rmd")
@@ -35,7 +40,7 @@ rule all:
     input:
         pdf  = "_book/my_article.pdf",
     output:
-        pdf  = config["sub2root"] + PROJ_NAME + ".pdf",
+        pdf  = ROOT + PROJ_NAME + ".pdf",
     shell:
         "cp {input.pdf} {output.pdf}"
 
@@ -51,11 +56,11 @@ rule pdf:
         figures = figures(expand(config["out_figures"] +
                             "{iPlot}.pdf",
                             iPlot = PLOTS)),
-        runner     = "build_pdfbook.R"
+        runner     = LIB + "build_pdfbook.R"
     output:
         "_book/" + "my_article.pdf"
     log:
-        "../../" + config["log"] + "paper/build_pdf.Rout"
+        ROOT + config["log"] + "paper/build_pdf.Rout"
     shell:
         "{runR} {input.runner} > {log} {logAll}"
 
