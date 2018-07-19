@@ -45,7 +45,12 @@ rule pdf:
         yaml_files = YAML_FILES,
         biblo      = BIB_FILES,
         tex_style  = TEX_FILES,
-        #tables     = TABLES,
+        tables     = tables(expand(config["out_tables"] +
+                            "{iTable}.tex",
+                            iTable = TABLES)),
+        figures = figures(expand(config["out_figures"] +
+                            "{iPlot}.pdf",
+                            iPlot = PLOTS)),
         runner     = "build_pdfbook.R"
     output:
         "_book/" + "my_article.pdf"
