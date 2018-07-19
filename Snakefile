@@ -7,6 +7,10 @@ import glob, os
 
 configfile: "config.yaml"
 
+# --- PROJECT NAME --- #
+
+PROJ_NAME = "mrw_replication"
+
 # --- Dictionaries --- #
 # Identify subset conditions for data
 DATA_SUBSET = [os.path.splitext(os.path.basename(iFile))[0]
@@ -63,6 +67,7 @@ logAll = "2>&1"
 
 rule all:
     input:
+        paper_pdf = paper(PROJ_NAME + ".pdf"),
         model = analysis(expand(config["out_analysis"] +
                             "{iModel}_ols_{iSubset}.rds",
                             iModel = MODELS,

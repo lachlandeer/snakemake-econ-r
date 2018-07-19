@@ -1,13 +1,62 @@
-# subworlflow: paper
+# subworkflow: paper
 #
-# Contributors: YOUR NAME
+# rticle-style: asa
+#
+# contributors: @lachlandeer, @julianlanger
 
 import glob, os
 
 # --- Importing Configuration Files --- #
+configfile: "../../config.yaml"
 
-configfile: "config.yaml"
+# --- Sub Workflow Dependencies --- #
+subworkflow figures:
+    workdir:   "../../" + config["ROOT"]
+    snakefile: "../../" + config["src_figures"] + "Snakefile"
+
+subworkflow tables:
+    workdir:   "../../" + config["ROOT"]
+    snakefile: "../../" + config["src_tables"] + "Snakefile"
 
 # --- Dictionaries --- #
+RMD_FILES  = glob.glob("*.Rmd")
+YAML_FILES = glob.glob("*.yml")
+CSS_FILES  = glob.glob("*.css")
+BIB_FILES  = glob.glob("*.bib")
+TEX_FILES  = glob.glob("*.tex")
+CLS_FILES  = glob.glob("*.cls")
+
+# --- Variable Declarations ---- #
+runR = "Rscript --no-save --no-restore --verbose"
+logAll = "2>&1"
 
 # --- Build Rules --- #
+
+rule all:
+    input:
+        pdf  = "_book/" + PROJ_NAME + ".pdf",
+    output:
+        pdf  = PROJ_NAME + ".pdf",
+    shell:
+        "cp {input.pdf} {output.pdf}"
+
+rule pdf:
+    input:
+        text_files = RMD_FILES,
+        yaml_files = YAML_FILES,
+        biblo      = BIB_FILES,
+        tex_style  = TEX_FILES,
+        #tables     = TABLES,
+        #cls_file   = CLS_FILES,
+        runner     = "build_pdfbook.R"
+    output:
+        "_book/" + PROJ_NAME + ".pdf"
+    log:
+        "../../" + config["log"] + "paper/build_pdf.Rout"
+    shell:
+        "{runR} {input.runner} > {log} {logAll}"
+
+
+rule clean:
+    shell:
+        "rm -rf _book/* bookdown_files/* *.pdf *.html"
