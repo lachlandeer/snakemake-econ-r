@@ -35,22 +35,7 @@ TABLES = [ "tab01_textbook_solow",
         ]
 
 # --- Sub Workflows --- #
-subworkflow data_mgt:
-   workdir:   config["ROOT"]
-   snakefile: config["src_data_mgt"] + "Snakefile"
-
-subworkflow analysis:
-   workdir:   config["ROOT"]
-   snakefile: config["src_analysis"] + "Snakefile"
-
-subworkflow tables:
-   workdir:   config["ROOT"]
-   snakefile: config["src_tables"] + "Snakefile"
-
-subworkflow figures:
-   workdir:   config["ROOT"]
-   snakefile: config["src_figures"] + "Snakefile"
-
+# only need the final outputs here
 subworkflow paper:
    workdir: config["src_paper"]
    snakefile:  config["src_paper"] + "Snakefile"
@@ -68,16 +53,6 @@ logAll = "2>&1"
 rule all:
     input:
         paper_pdf = paper(config["sub2root"] + PROJ_NAME + ".pdf"),
-        model = analysis(expand(config["out_analysis"] +
-                            "{iModel}_ols_{iSubset}.rds",
-                            iModel = MODELS,
-                            iSubset = DATA_SUBSET)),
-        figs  = figures(expand(config["out_figures"] +
-                            "{iPlot}.pdf",
-                            iPlot = PLOTS)),
-        tbls = tables(expand(config["out_tables"] +
-                            "{iTable}.tex",
-                            iTable = TABLES))
 
 # --- Packrat Rules --- #
 
