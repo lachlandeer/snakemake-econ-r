@@ -10,4 +10,9 @@ configfile: "config.yaml"
 
 # --- Dictionaries --- #
 
+# --- Sub Workflows --- #
+subworkflow analysis:
+    workdir: config["sub2root"] + config["ROOT"]
+    snakefile: config["sub2root"] + config["src_analysis"] + "Snakefile"
+
 # --- Build Rules --- #
