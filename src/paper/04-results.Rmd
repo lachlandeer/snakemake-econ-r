@@ -1,0 +1,7 @@
+## Results
+\input{../../out/tables/tab01_textbook_solow.tex}
+\input{../../out/tables/tab02_augment_solow.tex}
+\input{../../out/tables/tab03_ucc_solow.tex}
+\input{../../out/tables/tab04_cc_solow.tex}
+\input{../../out/tables/tab05_cc_aug_solow.tex}
+\input{../../out/tables/tab06_cc_aug_solow_restr.tex}
