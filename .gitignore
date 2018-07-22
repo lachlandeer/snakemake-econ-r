@@ -4,6 +4,7 @@ Rplots*
 packrat/lib*/
 logs/*
 packrat/src/*
+src/paper/libs/*
 .snakemake
 out/*
 _book
