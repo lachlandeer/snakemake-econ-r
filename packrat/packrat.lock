@@ -121,8 +121,8 @@ Hash: fb0029f1c84bf9b510c4f55cda7103f1
 
 Package: data.table
 Source: CRAN
-Version: 1.10.4-3
-Hash: 3c270a59ca3298aba8df3c1ae3bbea19
+Version: 1.11.4
+Hash: d8736a5fe41e5ebef191c43f5e22652f
 
 Package: devtools
 Source: CRAN
