@@ -41,8 +41,8 @@ Hash: 08f1f60e1038957030bcd9f4a58d22d8
 
 Package: XML
 Source: CRAN
-Version: 3.98-1.11
-Hash: 93ca736e34d01f5952dc770fbfa5fa62
+Version: 3.98-1.13
+Hash: 20c9d386068ae7b7238327ccde6728b3
 
 Package: abind
 Source: CRAN
@@ -427,10 +427,6 @@ GithubRepo: rticles
 GithubUsername: rstudio
 GithubRef: master
 GithubSha1: e7f2cc12c7cff40735594f62d5cd548df4841fc8
-RemoteHost: https://api.github.com
-RemoteRepo: rticles
-RemoteUsername: rstudio
-RemoteSha: e7f2cc12c7cff40735594f62d5cd548df4841fc8
 
 Package: scales
 Source: CRAN
