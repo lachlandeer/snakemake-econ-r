@@ -38,7 +38,7 @@ logAll = "2>&1"
 ## paper2root:   copy paper to root directory
 rule paper2root:
     input:
-        pdf  = "_book/my_article.pdf",
+        pdf  = ROOT + config["out_paper"] + "my_article.pdf",
     output:
         pdf  = ROOT + PROJ_NAME + ".pdf",
     shell:
@@ -59,7 +59,7 @@ rule knit_pdf:
                             iPlot = PLOTS)),
         runner     = LIB + "build_pdfbook.R"
     output:
-        "_book/" + "my_article.pdf"
+        ROOT + config["out_paper"] + "my_article.pdf"
     log:
         ROOT + config["log"] + "paper/build_pdf.Rout"
     shell:
