@@ -4,6 +4,8 @@
 #
 # contributors: @lachlandeer, @julianlanger
 
+import glob
+
 # --- Importing Configuration Files --- #
 configfile: "../../" + "config.yaml"
 

@@ -1,8 +1,6 @@
 # Main Workflow - MRW Replication
 # Contributors: @lachlandeer, @julianlanger
 
-import glob, os
-
 # --- Importing Configuration Files --- #
 
 configfile: "config.yaml"
