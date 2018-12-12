@@ -40,6 +40,8 @@ rule all:
         paper_pdf = paper(config["sub2root"] + PROJ_NAME + ".pdf"),
         beamer_slides = slides(config["sub2root"] +
                                 PROJ_NAME + "_slides.pdf"),
+    shell:
+        "rm Rplots.pdf"
 
 # --- Packrat Rules --- #
 
