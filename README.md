@@ -48,7 +48,9 @@ snakemake packrat_restore
 
 This will install all the packages we need. It may take a while.
 
-Once complete, we can run our project.
+## Step 3: Running the Example
+
+Once steps 1 and 2 complete, we can run our project.
 The result will be 2 pdfs: (1) mrw_replication.pdf - a pdf with some figures and tables of results included; and
 (2) mrw_replication slides - some slides that also contain some figures and pdfs that were build using this project.
 
