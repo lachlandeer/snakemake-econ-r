@@ -13,26 +13,13 @@ PROJ_NAME = "mrw_replication"
 
 # --- Dictionaries --- #
 # Identify subset conditions for data
-DATA_SUBSET = [os.path.splitext(os.path.basename(iFile))[0]
-                    for iFile in glob.glob(config["src_data_specs"] +
-                                            "*.json")]
-
-MODELS = [os.path.splitext(os.path.basename(iFile))[0]
-                    for iFile in glob.glob(config["src_model_specs"] +
-                                            "model_*.json")]
-
-PLOTS = ["unconditional_convergence",
-         "conditional_convergence",
-         "aug_conditional_convergence"
-        ]
-
-TABLES = [ "tab01_textbook_solow",
-            "tab02_augment_solow",
-            "tab03_ucc_solow",
-            "tab04_cc_solow",
-            "tab05_cc_aug_solow",
-            "tab06_cc_aug_solow_restr"
-        ]
+DATA_SUBSET = glob_wildcards(config["src_data_specs"] + "{fname}.json").fname
+# Models we want to estimate
+MODELS = glob_wildcards(config["src_model_specs"] + "{fname}.json").fname
+# plots we want to build
+PLOTS = glob_wildcards(config["src_figures"] + "{fname}.R").fname
+# tables to generate
+TABLES = glob_wildcards(config["src_tables"] + "{fname}.R").fname
 
 # --- Sub Workflows --- #
 # only need the final outputs here
