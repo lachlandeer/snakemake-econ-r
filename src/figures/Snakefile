@@ -15,50 +15,20 @@ subworkflow data_mgt:
 
 # --- Build Rules --- #
 
-## aug_cond_conv:   Plot of augmented conditional convergence test
-rule aug_cond_conv:
+rule make_figs:
     input:
-        script = config["src_figures"] + "aug_conditional_convergence.R",
-        data   = data_mgt(config["out_data"] + "mrw_complete.csv"),
-        subset = config["src_data_specs"] + "subset_intermediate.json"
-    output:
-        fig = config["out_figures"] + "aug_conditional_convergence.pdf",
-    log:
-        config["log"] + "figures/aug_conditional_convergence.txt"
-    shell:
-        "{runR} {input.script} \
-            --data {input.data} \
-            --subset {input.subset} \
-            --out {output.fig} \
-            > {log} {logAll}"
+        expand(config["out_figures"] + "{iFigure}.pdf",
+                iFigure = FIGURES)
 
-## cond_conv:   Plot of conditional convergence test
-rule cond_conv:
+rule figures:
     input:
-        script = config["src_figures"] + "conditional_convergence.R",
+        script = config["src_figures"] + "{iFigure}.R",
         data   = data_mgt(config["out_data"] + "mrw_complete.csv"),
         subset = config["src_data_specs"] + "subset_intermediate.json"
     output:
-        fig = config["out_figures"] + "conditional_convergence.pdf",
+        fig = config["out_figures"] + "{iFigure}.pdf",
     log:
-        config["log"] + "figures/conditional_convergence.txt"
-    shell:
-        "{runR} {input.script} \
-            --data {input.data} \
-            --subset {input.subset} \
-            --out {output.fig} \
-            > {log} {logAll}"
-
-## uncond_conv:   Plot of unconditional convergence test
-rule uncond_conv:
-    input:
-        script = config["src_figures"] + "unconditional_convergence.R",
-        data   = data_mgt(config["out_data"] + "mrw_complete.csv"),
-        subset = config["src_data_specs"] + "subset_intermediate.json"
-    output:
-        fig = config["out_figures"] + "unconditional_convergence.pdf",
-    log:
-        config["log"] + "figures/unconditional_convergence.txt"
+        config["log"] + "figures/{iFigure}.txt"
     shell:
         "{runR} {input.script} \
             --data {input.data} \
