@@ -18,7 +18,7 @@ subworkflow data_mgt:
 rule make_figs:
     input:
         expand(config["out_figures"] + "{iFigure}.pdf",
-                iFigure = FIGURES)
+                iFigure = PLOTS)
 
 rule figures:
     input:

@@ -18,10 +18,7 @@ MODELS = glob_wildcards(config["src_model_specs"] + "{fname}.json").fname
 PLOTS = glob_wildcards(config["src_figures"] + "{fname}.R").fname
 # tables to generate
 TABLES = glob_wildcards(config["src_tables"] + "{fname}.R").fname
-# figures to generate
-FIGURES = glob_wildcards(config["src_figures"] + "{fname}.R").fname
 
-print(FIGURES)
 
 # --- Sub Workflows --- #
 # only need the final outputs here
