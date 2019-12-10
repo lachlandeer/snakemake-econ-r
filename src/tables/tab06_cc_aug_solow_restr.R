@@ -15,7 +15,7 @@ library(stargazer)
 
 # CLI parsing
 option_list = list(
-   make_option(c("-fp", "--filepath"),
+   make_option(c("-f", "--filepath"),
                type = "character",
                default = NULL,
                help = "A directory path where models are saved",
