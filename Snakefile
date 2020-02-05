@@ -63,27 +63,29 @@ rule config_pass:
     input:
         data   = data_mgt(config["out_data"] + "mrw_complete.csv")
 
+# --- renv rules --- #
+
 # --- Packrat Rules --- #
 
-## packrat_install: installs packrat onto machine
-rule packrat_install:
-    shell:
-        "R -e 'install.packages(\"packrat\", repos=\"http://cran.us.r-project.org\")'"
+# ## packrat_install: installs packrat onto machine
+# rule packrat_install:
+#     shell:
+#         "R -e 'install.packages(\"packrat\", repos=\"http://cran.us.r-project.org\")'"
 
-## packrat_install: initialize a packrat environment for this project
-rule packrat_init:
-    shell:
-        "R -e 'packrat::init()'"
+# ## packrat_install: initialize a packrat environment for this project
+# rule packrat_init:
+#     shell:
+#         "R -e 'packrat::init()'"
 
-## packrat_snap   : Look for new R packages in files & archives them
-rule packrat_snap:
-    shell:
-        "R -e 'packrat::snapshot()'"
+# ## packrat_snap   : Look for new R packages in files & archives them
+# rule packrat_snap:
+#     shell:
+#         "R -e 'packrat::snapshot()'"
 
-## packrat_restore: Installs archived packages onto a new machine
-rule packrat_restore:
-    shell:
-        "R -e 'packrat::restore()'"
+# ## packrat_restore: Installs archived packages onto a new machine
+# rule packrat_restore:
+#     shell:
+#         "R -e 'packrat::restore()'"
 
 # --- Cleaning Rules --- #
 
