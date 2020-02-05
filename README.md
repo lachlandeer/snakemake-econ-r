@@ -58,6 +58,14 @@ snakemake renv_install
 Once this is complete you can use renv to create a separate R environment that contains the packages we use in our example by entering the following command into the terminal:
 
 ``` bash
+snakemake renv_init
+```
+
+The above commit will initialize a separate R environment for this project.
+
+Now we will install the necessary packages (and their precise versions) which are stored in the `renv.lock` file:
+
+``` bash
 snakemake renv_restore
 ```
 
