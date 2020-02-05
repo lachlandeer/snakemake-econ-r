@@ -56,7 +56,7 @@ rule all:
 ## renv_install: installs packrat onto machine
 rule renv_install:
     shell:
-        "remotes::install_github('rstudio/renv')"
+        "{runR} src/lib/install_renv.R"
 
 ## renv_install: initialize a packrat environment for this project
 rule renv_init:
@@ -71,7 +71,7 @@ rule renv_snap:
 ## renv_restore: Installs archived packages onto a new machine
 rule renv_restore:
     shell:
-        "R -e 'packrat::restore()'"
+        "R -e 'renv::restore()'"
 
 # --- Cleaning Rules --- #
 
