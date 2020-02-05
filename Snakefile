@@ -3,7 +3,7 @@
 
 # --- Importing Configuration Files --- #
 
-configfile: "config.yaml"
+configfile: "paths.yaml"
 
 # --- PROJECT NAME --- #
 
@@ -22,13 +22,22 @@ TABLES = glob_wildcards(config["src_tables"] + "{fname}.R").fname
 
 # --- Sub Workflows --- #
 # only need the final outputs here
-subworkflow paper:
-   workdir: config["src_paper"]
-   snakefile:  config["src_paper"] + "Snakefile"
+# subworkflow paper:
+#    workdir: config["src_paper"]
+#    snakefile:  config["src_paper"] + "Snakefile"
 
-subworkflow slides:
-   workdir: config["src_slides"]
-   snakefile: config["src_slides"] + "Snakefile"
+# subworkflow slides:
+#    workdir: config["src_slides"]
+#    snakefile: config["src_slides"] + "Snakefile"
+
+# subworkflow tables:
+#    workdir: config["src_tables"]
+#    snakefile: config["src_tables"] + "Snakefile"
+
+subworkflow data_mgt:
+    workdir: config["ROOT"]
+    snakefile: config["src_data_mgt"] + "Snakefile"
+    configfile: "paths.yaml"
 
 # --- Variable Declarations ---- #
 runR = "Rscript --no-save --no-restore --verbose"
@@ -36,13 +45,23 @@ logAll = "2>&1"
 
 # --- Main Build Rules --- #
 
-rule all:
+# rule all:
+#     input:
+#         paper_pdf = paper(config["sub2root"] + PROJ_NAME + ".pdf"),
+#         beamer_slides = slides(config["sub2root"] +
+#                                 PROJ_NAME + "_slides.pdf"),
+#     shell:
+#         "rm Rplots.pdf"
+
+# rule tables_check:
+#     input:
+#         tables     = tables(expand(config["out_tables"] +
+#                             "{iTable}.tex",
+#                             iTable = TABLES))
+
+rule config_pass:
     input:
-        paper_pdf = paper(config["sub2root"] + PROJ_NAME + ".pdf"),
-        beamer_slides = slides(config["sub2root"] +
-                                PROJ_NAME + "_slides.pdf"),
-    shell:
-        "rm Rplots.pdf"
+        data   = data_mgt(config["out_data"] + "mrw_complete.csv")
 
 # --- Packrat Rules --- #
 
