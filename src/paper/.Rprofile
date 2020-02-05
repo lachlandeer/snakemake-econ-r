@@ -1,5 +1,5 @@
 temp <- getwd()
 setwd("../..")
-source("packrat/init.R")
+source("renv/activate.R")
 setwd(temp)
 rm(temp)
