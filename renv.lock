@@ -567,8 +567,9 @@
     },
     "rticles": {
       "Package": "rticles",
-      "Version": "0.13",
-      "Source": "Repository"
+      "Version": "0.12",
+      "Source": "Repository",
+      "Repository": "CRAN"
     },
     "scales": {
       "Package": "scales",
