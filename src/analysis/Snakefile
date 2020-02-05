@@ -6,7 +6,7 @@ import glob, os
 
 # --- Importing Configuration Files --- #
 
-configfile: "config.yaml"
+configfile: "paths.yaml"
 
 # --- Dictionaries --- #
 

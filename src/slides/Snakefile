@@ -4,7 +4,7 @@
 
 # --- Importing Configuration Files --- #
 
-configfile: "../../" "config.yaml"
+configfile: "../../" "paths.yaml"
 
 ROOT = config["sub2root"]
 HERE = ROOT + config["src_slides"]
