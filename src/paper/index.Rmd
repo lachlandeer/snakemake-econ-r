@@ -7,7 +7,7 @@ blinded: 0
 authors:
 - name: Lachlan Deer
   thanks: Corresponding author. We probably want to thank many people.
-  affiliation: Department of Economics, University of Zurich
+  affiliation: University of Chicago Booth School of Business
 
 - name: Julian Langer
   affiliation: Department of Economics, University of Zurich
