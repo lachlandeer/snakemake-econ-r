@@ -50,42 +50,28 @@ rule all:
         paper_pdf = paper(config["sub2root"] + PROJ_NAME + ".pdf"),
         beamer_slides = slides(config["sub2root"] +
                                 PROJ_NAME + "_slides.pdf"),
-    # shell:
-    #     "rm Rplots.pdf"
-
-rule tables_check:
-    input:
-        tables     = tables(expand(config["out_tables"] +
-                            "{iTable}.tex",
-                            iTable = TABLES))
-
-rule config_pass:
-    input:
-        data   = data_mgt(config["out_data"] + "mrw_complete.csv")
 
 # --- renv rules --- #
 
-# --- Packrat Rules --- #
+## renv_install: installs packrat onto machine
+rule renv_install:
+    shell:
+        "remotes::install_github('rstudio/renv')"
 
-# ## packrat_install: installs packrat onto machine
-# rule packrat_install:
-#     shell:
-#         "R -e 'install.packages(\"packrat\", repos=\"http://cran.us.r-project.org\")'"
+## renv_install: initialize a packrat environment for this project
+rule renv_init:
+    shell:
+        "R -e 'renv::init()'"
 
-# ## packrat_install: initialize a packrat environment for this project
-# rule packrat_init:
-#     shell:
-#         "R -e 'packrat::init()'"
+## renv_snap   : Look for new R packages in files & archives them
+rule renv_snap:
+    shell:
+        "R -e 'renv::snapshot()'"
 
-# ## packrat_snap   : Look for new R packages in files & archives them
-# rule packrat_snap:
-#     shell:
-#         "R -e 'packrat::snapshot()'"
-
-# ## packrat_restore: Installs archived packages onto a new machine
-# rule packrat_restore:
-#     shell:
-#         "R -e 'packrat::restore()'"
+## renv_restore: Installs archived packages onto a new machine
+rule renv_restore:
+    shell:
+        "R -e 'packrat::restore()'"
 
 # --- Cleaning Rules --- #
 
