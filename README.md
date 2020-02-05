@@ -42,7 +42,7 @@ you may need to replace `pip3` with `pip`
 
 We provide instructions on how to install R [here](https://pp4rs.github.io/2020-uzh-installation-guide/r)
 
-## Step 2: Install the Required `R` libraries.
+### Step 2: Install the Required `R` libraries.
 
 We utilize many additional R packages inside the scripts that build our project.
 To ensure that our project runs on every machine without issues relating to R packages not being installed we utilize `renv` to control the list of packages needed to run this example, and to monitor the version of the package we use.
@@ -63,7 +63,7 @@ snakemake renv_restore
 
 This will install all the packages we need. It may take a while.
 
-## Step 3: Running the Example
+### Step 3: Running the Example
 
 Once steps 1 and 2 complete, we can run our project.
 The result will be 2 pdfs: (1) mrw_replication.pdf - a pdf with some figures and tables of results included; and
@@ -94,7 +94,6 @@ This will run through all the R scripts in order to complete the build of the pr
 ```bash
 snakemake renv_snap
 ```
-
 
 ## Suggested Citation:
 
