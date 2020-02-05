@@ -9,3 +9,4 @@ src/paper/libs/*
 out/*
 _book
 *.pdf
+*.log
