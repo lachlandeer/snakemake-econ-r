@@ -10,5 +10,4 @@ out/*
 _book
 *.pdf
 *.log
-renv
 .Rprofile
