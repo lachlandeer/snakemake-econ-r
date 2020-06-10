@@ -4,11 +4,9 @@
 import glob
 
 # --- Importing Configuration Files --- #
-
 configfile: "paths.yaml"
 
 # --- PROJECT NAME --- #
-
 PROJ_NAME = "mrw_replication"
 
 # --- Dictionaries --- #
@@ -23,109 +21,39 @@ TABLES = glob_wildcards(config["src_tables"] + "{fname}.R").fname
 
 # --- Sub Workflows --- #
 # Include all other Snakefiles that contain rules that are part of the project
+include: config["workflows"] + "renv.smk"
+include: config["workflows"] + "clean.smk"
+include: config["workflows"] + "help.smk"
 
-include: config["src_data_mgt"] + "Snakefile"
-include: config["src_analysis"] + "Snakefile"
-include: config["src_figures"]  + "Snakefile"
-include: config["src_tables"]   + "Snakefile"
-include: config["src_paper"]    + "Snakefile"
-include: config["src_slides"]   + "Snakefile"
+include: config["workflows"] + "data_mgt.smk"
+include: config["workflows"] + "analysis.smk"
+include: config["workflows"] + "figures.smk"
+include: config["workflows"] + "tables.smk"
+include: config["workflows"] + "paper.smk"
+include: config["workflows"] + "slides.smk"
 
 # --- Variable Declarations ---- #
 runR = "Rscript --no-save --no-restore --verbose"
 logAll = "2>&1"
 
-# --- Main Build Rules --- #
-
+# --- Main Build Rule --- #
+## all            : build paper and slides that are the core of the project
 rule all:
     input:
         paper_pdf     = PROJ_NAME + ".pdf",
         beamer_slides = PROJ_NAME + "_slides.pdf"
 
-# --- renv rules --- #
-
-## renv_install: installs renv onto machine
-rule renv_install:
-    shell:
-        "{runR} src/lib/install_renv.R"
-
-## renv_consent: permission for renv to write files to system 
-rule renv_consent:
-    shell:
-        "R -e renv::consent(provided = TRUE)"        
-
-## renv_install: initialize a renv environment for this project
-rule renv_init:
-    shell:
-        "R -e 'renv::init()'"
-
-## renv_snap   : Look for new R packages in files & archives them
-rule renv_snap:
-    shell:
-        "R -e 'renv::snapshot()'"
-
-## renv_restore: Installs archived packages onto a new machine
-rule renv_restore:
-    shell:
-        "R -e 'renv::restore()'"
-
 # --- Cleaning Rules --- #
-
 ## clean_all      : delete all output and log files for this project
 rule clean_all:
     shell:
         "rm -rf out/ log/ *.pdf *.html"
 
-## clean_output   : delete all built files in project's output and ROOT directory
-rule clean_output:
-    shell:
-        "rm -rf out/ *.pdf *.html"
-
-## clean_logs     : delete all log files for this project
-rule clean_log:
-    shell:
-        "rm -rf log/"
-
 # --- Help Rules --- #
-
-## help_main      : prints help comments for Snakefile in ROOT directory
+## help_main      : prints help comments for Snakefile in ROOT directory. 
+##                  Help for rules in other parts of the workflows (i.e. in workflow/)
+##                  can be called by `snakemake help_<workflowname>`
 rule help_main:
     input: "Snakefile"
-    shell:
-        "sed -n 's/^##//p' {input}"
-
-## help_analysis  : prints help comments for Snakefile in analysis directory
-rule help_analysis:
-    input: config["src_analysis"] + "Snakefile"
-    shell:
-        "sed -n 's/^##//p' {input}"
-
-## help_data_mgt  : prints help comments for Snakefile in data-management directory
-rule help_data_mgt:
-    input: config["src_data_mgt"] + "Snakefile"
-    shell:
-        "sed -n 's/^##//p' {input}"
-
-## help_figures   : prints help comments for Snakefile in figures directory
-rule help_figures:
-    input: config["src_figures"] + "Snakefile"
-    shell:
-        "sed -n 's/^##//p' {input}"
-
-## help_paper     : prints help comments for Snakefile in paper directory
-rule help_paper:
-    input: config["src_paper"] + "Snakefile"
-    shell:
-        "sed -n 's/^##//p' {input}"
-
-## help_slides    : prints help comments for Snakefile in slides directory
-rule help_slides:
-    input: config["src_slides"] + "Snakefile"
-    shell:
-        "sed -n 's/^##//p' {input}"
-
-## help_tables    : prints help comments for Snakefile in tables directory
-rule help_tables:
-    input: config["src_tables"] + "Snakefile"
     shell:
         "sed -n 's/^##//p' {input}"

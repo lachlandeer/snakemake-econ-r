@@ -1,5 +1,4 @@
-ROOT: "."
-sub2root: "../../"
+workflows: "workflows/"
 src: "src/"
 log: "logs/"
 out: "out/"
