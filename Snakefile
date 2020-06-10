@@ -53,7 +53,7 @@ rule all:
 
 # --- renv rules --- #
 
-## renv_install: installs packrat onto machine
+## renv_install: installs renv onto machine
 rule renv_install:
     shell:
         "{runR} src/lib/install_renv.R"
@@ -63,7 +63,7 @@ rule renv_consent:
     shell:
         "R -e renv::consent(provided = TRUE)"        
 
-## renv_install: initialize a packrat environment for this project
+## renv_install: initialize a renv environment for this project
 rule renv_init:
     shell:
         "R -e 'renv::init()'"
