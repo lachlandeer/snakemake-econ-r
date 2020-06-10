@@ -23,6 +23,7 @@ TABLES = glob_wildcards(config["src_tables"] + "{fname}.R").fname
 # Include all other Snakefiles that contain rules that are part of the project
 include: config["workflows"] + "renv.smk"
 include: config["workflows"] + "clean.smk"
+include: config["workflows"] + "dag.smk"
 include: config["workflows"] + "help.smk"
 
 include: config["workflows"] + "data_mgt.smk"
