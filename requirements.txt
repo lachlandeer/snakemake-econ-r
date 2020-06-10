@@ -1,2 +1,2 @@
-snakemake==5.5.1
+snakemake==5.18.0
 
