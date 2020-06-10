@@ -1,3 +1,7 @@
+# subworkflow: clean
+#
+# Contributors: @lachlandeer, @julianlanger
+
 ## clean_output   : delete all built files in project's output and ROOT directory
 rule clean_output:
     shell:

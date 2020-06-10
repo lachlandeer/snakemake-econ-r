@@ -3,6 +3,7 @@
 # Contributors: @lachlandeer, @julianlanger
 
 # --- Build Rules --- #
+## gen_regression_vars: creates the set of variables needed to produce MRW results
 rule gen_regression_vars:
     input:
         script = config["src_data_mgt"] + "gen_reg_vars.R",
@@ -17,6 +18,7 @@ rule gen_regression_vars:
             --out {output.data} \
             > {log} {logAll}"
 
+## rename_vars     : gives meaningful names to variables 
 rule rename_vars:
     input:
         script = config["src_data_mgt"] + "rename_variables.R",

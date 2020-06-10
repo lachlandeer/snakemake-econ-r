@@ -2,11 +2,13 @@
 #
 # Contributors: @lachlandeer, @julianlanger
 
+## make_figs: Helper rule to expand wildcard and generate all figures
 rule make_figs:
     input:
         expand(config["out_figures"] + "{iFigure}.pdf",
                 iFigure = PLOTS)
 
+## figures: the recipe to make a figures using intermediate country data from MRW
 rule figures:
     input:
         script = config["src_figures"] + "{iFigure}.R",

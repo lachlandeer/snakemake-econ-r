@@ -3,6 +3,7 @@
 # Contributors: @lachlandeer, @julianlanger
 
 # --- Build Rules --- #
+## estimate_models  : Helper rule that runs all regression models by expanding wildcards
 rule estimate_models:
     input:
         expand(config["out_analysis"] +
@@ -10,6 +11,7 @@ rule estimate_models:
                             iModel = MODELS,
                             iSubset = DATA_SUBSET)
 
+## ols_model        : Estimate an OLS regression model on MRW data      
 rule ols_model:
     input:
         script = config["src_analysis"] + "estimate_ols_model.R",
