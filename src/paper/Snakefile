@@ -4,43 +4,19 @@
 #
 # contributors: @lachlandeer, @julianlanger
 
-import glob
-
-# --- Importing Configuration Files --- #
-configfile: "../../" + "paths.yaml"
-
-ROOT = config["sub2root"]
-HERE = ROOT + config["src_paper"]
-LIB  = ROOT + config["src_lib"]
-OUT  = config["out"]
-
-# --- Sub Workflow Dependencies --- #
-subworkflow figures:
-    workdir:  ROOT + config["ROOT"]
-    snakefile: ROOT + config["src_figures"] + "Snakefile"
-
-subworkflow tables:
-    workdir:   ROOT + config["ROOT"]
-    snakefile: ROOT + config["src_tables"] + "Snakefile"
-
 # --- Dictionaries --- #
-RMD_FILES  = glob.glob("*.Rmd")
-YAML_FILES = glob.glob("*.yml")
-BIB_FILES  = glob.glob("*.bib")
-TEX_FILES  = glob.glob("*.tex")
-
-# --- Variable Declarations ---- #
-runR = "Rscript --no-save --no-restore --verbose"
-logAll = "2>&1"
+RMD_FILES  = glob.glob(config["src_paper"] + "*.Rmd")
+YAML_FILES = glob.glob(config["src_paper"] + "*.yml")
+BIB_FILES  = glob.glob(config["src_paper"] + "*.bib")
+TEX_FILES  = glob.glob(config["src_paper"] + "*.tex")
 
 # --- Build Rules --- #
-
 ## paper2root:   copy paper to root directory
 rule paper2root:
     input:
-        pdf  = ROOT + config["out_paper"] + "my_article.pdf",
+        pdf  = config["out_paper"] + "my_article.pdf",
     output:
-        pdf  = ROOT + PROJ_NAME + ".pdf",
+        pdf  = PROJ_NAME + ".pdf",
     shell:
         "cp {input.pdf} {output.pdf}"
 
@@ -51,21 +27,16 @@ rule knit_pdf:
         yaml_files = YAML_FILES,
         biblo      = BIB_FILES,
         tex_style  = TEX_FILES,
-        tables     = tables(expand(config["out_tables"] +
+        tables     = expand(config["out_tables"] +
                             "{iTable}.tex",
-                            iTable = TABLES)),
-        figures = figures(expand(config["out_figures"] +
+                            iTable = TABLES),
+        figures = expand(config["out_figures"] +
                             "{iPlot}.pdf",
-                            iPlot = PLOTS)),
-        runner     = LIB + "build_pdfbook.R"
+                            iPlot = PLOTS),
+        runner     = config["src_lib"] + "build_pdfbook.R"
     output:
-        ROOT + config["out_paper"] + "my_article.pdf"
+        config["out_paper"] + "my_article.pdf"
     log:
-        ROOT + config["log"] + "paper/build_pdf.Rout"
+        config["log"] + "paper/build_pdf.Rout"
     shell:
         "{runR} {input.runner} > {log} {logAll}"
-
-
-rule clean:
-    shell:
-        "rm -rf _book/* bookdown_files/* *.pdf *.html"

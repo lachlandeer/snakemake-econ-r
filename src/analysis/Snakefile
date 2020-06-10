@@ -2,19 +2,6 @@
 #
 # Contributors: @lachlandeer, @julianlanger
 
-import glob, os
-
-# --- Importing Configuration Files --- #
-
-configfile: "paths.yaml"
-
-# --- Dictionaries --- #
-
-# --- Sub Workflows --- #
-subworkflow data_mgt:
-    workdir: config["sub2root"] + config["ROOT"]
-    snakefile: config["sub2root"] + config["src_data_mgt"] + "Snakefile"
-
 # --- Build Rules --- #
 rule estimate_models:
     input:
@@ -26,7 +13,7 @@ rule estimate_models:
 rule ols_model:
     input:
         script = config["src_analysis"] + "estimate_ols_model.R",
-        data   = data_mgt(config["out_data"] + "mrw_complete.csv"),
+        data   = config["out_data"] + "mrw_complete.csv",
         model  = config["src_model_specs"] + "{iModel}.json",
         subset = config["src_data_specs"] + "{iSubset}.json"
     output:

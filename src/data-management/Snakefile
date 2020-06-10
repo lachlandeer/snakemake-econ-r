@@ -2,15 +2,7 @@
 #
 # Contributors: @lachlandeer, @julianlanger
 
-# --- Importing Configuration Files --- #
-
-configfile: "paths.yaml"
-
-
-# --- Dictionaries --- #
-
 # --- Build Rules --- #
-
 rule gen_regression_vars:
     input:
         script = config["src_data_mgt"] + "gen_reg_vars.R",

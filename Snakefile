@@ -1,6 +1,8 @@
 # Main Workflow - MRW Replication
 # Contributors: @lachlandeer, @julianlanger
 
+import glob
+
 # --- Importing Configuration Files --- #
 
 configfile: "paths.yaml"
@@ -19,25 +21,15 @@ PLOTS = glob_wildcards(config["src_figures"] + "{fname}.R").fname
 # tables to generate
 TABLES = glob_wildcards(config["src_tables"] + "{fname}.R").fname
 
-
 # --- Sub Workflows --- #
-# only need the final outputs here
-subworkflow paper:
-   workdir: config["src_paper"]
-   snakefile:  config["src_paper"] + "Snakefile"
+# Include all other Snakefiles that contain rules that are part of the project
 
-subworkflow slides:
-   workdir: config["src_slides"]
-   snakefile: config["src_slides"] + "Snakefile"
-
-subworkflow tables:
-   workdir: config["src_tables"]
-   snakefile: config["src_tables"] + "Snakefile"
-
-subworkflow data_mgt:
-    workdir: config["ROOT"]
-    snakefile: config["src_data_mgt"] + "Snakefile"
-    configfile: "paths.yaml"
+include: config["src_data_mgt"] + "Snakefile"
+include: config["src_analysis"] + "Snakefile"
+include: config["src_figures"]  + "Snakefile"
+include: config["src_tables"]   + "Snakefile"
+include: config["src_paper"]    + "Snakefile"
+include: config["src_slides"]   + "Snakefile"
 
 # --- Variable Declarations ---- #
 runR = "Rscript --no-save --no-restore --verbose"
@@ -47,9 +39,8 @@ logAll = "2>&1"
 
 rule all:
     input:
-        paper_pdf = paper(config["sub2root"] + PROJ_NAME + ".pdf"),
-        beamer_slides = slides(config["sub2root"] +
-                                PROJ_NAME + "_slides.pdf"),
+        paper_pdf     = PROJ_NAME + ".pdf",
+        beamer_slides = PROJ_NAME + "_slides.pdf"
 
 # --- renv rules --- #
 
