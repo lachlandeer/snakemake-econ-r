@@ -11,3 +11,4 @@ _book
 *.pdf
 *.log
 .Rprofile
+test.R
