@@ -36,7 +36,9 @@ pip3 install -r requirements.txt
 
 you may need to replace `pip3` with `pip`
 
-**Note**: The current version of this repo does not build with the bleeding edge versions of snakemake (versions > 5.7). It's something we are working on
+**Note:** In recent versions of Snakemake you must state how many cores you want to use when executing rules. 
+In this example, we encourage the use of a single core, so when we use snakemake we will always write it as `snakemake --cores 1 <something>`.
+More cores speeds things up, but our example is quite light so it seems unnecessary.
 
 #### Installing `R`
 
@@ -52,19 +54,19 @@ Open a terminal and navigate to this directory.
 Then in the terminal enter the following command to install renv:
 
 ``` bash
-snakemake renv_install
+snakemake --cores 1 renv_install
 ```
 
 Then you will need to provide consent for `renv` to be able to write files to your system:
 
 ``` bash
-snakemake renv_consent
+snakemake --cores 1 renv_consent
 ```
 
 Once this is complete you can use renv to create a separate R environment that contains the packages we use in our example by entering the following command into the terminal:
 
 ``` bash
-snakemake renv_init
+snakemake --cores 1 renv_init
 ```
 
 The above command will initialize a separate R environment for this project.
@@ -72,7 +74,7 @@ The above command will initialize a separate R environment for this project.
 Now we will install the necessary packages (and their precise versions) which are stored in the `renv.lock` file:
 
 ``` bash
-snakemake renv_restore
+snakemake --cores 1 renv_restore
 ```
 
 This will install all the packages we need. It may take a while.
@@ -86,7 +88,7 @@ The result will be 2 pdfs: (1) mrw_replication.pdf - a pdf with some figures and
 To run the project, enter the following into the terminal:
 
 ``` bash
-snakemake all
+snakemake --cores 1 all
 ```
 
 This will run through all the R scripts in order to complete the build of the project.
@@ -100,13 +102,13 @@ This will run through all the R scripts in order to complete the build of the pr
    and press `Return`.
 
    ``` bash
-   snakemake renv_init
+   snakemake --cores 1 renv_init
    ```
 
 * If we add new `R` packages that we want to include in a project, we take a `snapshot` of the packages utilized in the project with:
 
 ```bash
-snakemake renv_snap
+snakemake --cores 1 renv_snap
 ```
 
 ## Suggested Citation:
