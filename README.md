@@ -19,8 +19,8 @@ We hope by using an example that is simple in its methods readers focus on how w
 You need to have the following software and packages installed:
 
 1. Python 3 (ideally python 3.6 or higher)
-2. Snakemake
-3. R
+2. Snakemake (we'll install the correct version in a couple of lines time!)
+3. R (ideally R 3.6.1 or higher)
 
 #### Installing Python.
 
