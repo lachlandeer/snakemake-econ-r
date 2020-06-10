@@ -2,20 +2,8 @@
 #
 # Contributors: @lachlandeer, @julianlanger
 
-import glob, os
-
-# --- Importing Configuration Files --- #
-
-configfile: "paths.yaml"
-
-# --- Dictionaries --- #
-
-# --- Sub Workflows --- #
-subworkflow data_mgt:
-    workdir: config["sub2root"] + config["ROOT"]
-    snakefile: config["sub2root"] + config["src_data_mgt"] + "Snakefile"
-
 # --- Build Rules --- #
+## estimate_models  : Helper rule that runs all regression models by expanding wildcards
 rule estimate_models:
     input:
         expand(config["out_analysis"] +
@@ -23,10 +11,11 @@ rule estimate_models:
                             iModel = MODELS,
                             iSubset = DATA_SUBSET)
 
+## ols_model        : Estimate an OLS regression model on MRW data      
 rule ols_model:
     input:
         script = config["src_analysis"] + "estimate_ols_model.R",
-        data   = data_mgt(config["out_data"] + "mrw_complete.csv"),
+        data   = config["out_data"] + "mrw_complete.csv",
         model  = config["src_model_specs"] + "{iModel}.json",
         subset = config["src_data_specs"] + "{iSubset}.json"
     output:

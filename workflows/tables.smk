@@ -2,27 +2,15 @@
 #
 # Contributors: @lachlandeer, @julianlanger
 
-# --- Importing Configuration Files --- #
-
-configfile: "paths.yaml"
-
-# --- Dictionaries --- #
-
-# --- Sub Workflows --- #
-subworkflow analysis:
-    workdir: config["sub2root"] + config["ROOT"]
-    snakefile: config["sub2root"] + config["src_analysis"] + "Snakefile"
-
 # --- Build Rules --- #
-
 ## aug_restr_conditional_convergence:
 rule aug_restr_conditional_convergence:
     input:
         script = config["src_tables"] + "tab06_cc_aug_solow_restr.R",
-        models = analysis(expand(config["out_analysis"] +
-                            "{iModel}_ols_{iSubset}.rds",
-                            iModel = MODELS,
-                            iSubset = DATA_SUBSET)),
+        models = expand(config["out_analysis"] +
+                        "{iModel}_ols_{iSubset}.rds",
+                        iModel = MODELS,
+                        iSubset = DATA_SUBSET),
     params:
         filepath   = config["out_analysis"],
         model_expr = "model_aug_cc_restr*.rds"
@@ -42,10 +30,10 @@ rule aug_restr_conditional_convergence:
 rule aug_conditional_convergence:
     input:
         script = config["src_tables"] + "tab05_cc_aug_solow.R",
-        models = analysis(expand(config["out_analysis"] +
-                            "{iModel}_ols_{iSubset}.rds",
-                            iModel = MODELS,
-                            iSubset = DATA_SUBSET)),
+        models = expand(config["out_analysis"] +
+                        "{iModel}_ols_{iSubset}.rds",
+                        iModel = MODELS,
+                        iSubset = DATA_SUBSET),
     params:
         filepath   = config["out_analysis"],
         model_expr = "model_aug_cc_ols*.rds"
@@ -64,10 +52,10 @@ rule aug_conditional_convergence:
 rule conditional_convergence:
     input:
         script = config["src_tables"] + "tab04_cc_solow.R",
-        models = analysis(expand(config["out_analysis"] +
-                            "{iModel}_ols_{iSubset}.rds",
-                            iModel = MODELS,
-                            iSubset = DATA_SUBSET)),
+        models = expand(config["out_analysis"] +
+                        "{iModel}_ols_{iSubset}.rds",
+                        iModel = MODELS,
+                        iSubset = DATA_SUBSET),
     params:
         filepath   = config["out_analysis"],
         model_expr = "model_cc*.rds"
@@ -86,10 +74,10 @@ rule conditional_convergence:
 rule unconditional_convergence:
     input:
         script = config["src_tables"] + "tab03_ucc_solow.R",
-        models = analysis(expand(config["out_analysis"] +
-                            "{iModel}_ols_{iSubset}.rds",
-                            iModel = MODELS,
-                            iSubset = DATA_SUBSET)),
+        models = expand(config["out_analysis"] +
+                        "{iModel}_ols_{iSubset}.rds",
+                        iModel = MODELS,
+                        iSubset = DATA_SUBSET),
     params:
         filepath   = config["out_analysis"],
         model_expr = "model_ucc*.rds"
@@ -108,10 +96,10 @@ rule unconditional_convergence:
 rule augment_solow:
     input:
         script = config["src_tables"] + "tab02_augment_solow.R",
-        models = analysis(expand(config["out_analysis"] +
-                            "{iModel}_ols_{iSubset}.rds",
-                            iModel = MODELS,
-                            iSubset = DATA_SUBSET)),
+        models = expand(config["out_analysis"] +
+                        "{iModel}_ols_{iSubset}.rds",
+                        iModel = MODELS,
+                        iSubset = DATA_SUBSET),
     params:
         filepath   = config["out_analysis"],
         model_expr = "model_aug_solow*.rds"
@@ -130,10 +118,10 @@ rule augment_solow:
 rule textbook_solow:
     input:
         script = config["src_tables"] + "tab01_textbook_solow.R",
-        models = analysis(expand(config["out_analysis"] +
-                            "{iModel}_ols_{iSubset}.rds",
-                            iModel = MODELS,
-                            iSubset = DATA_SUBSET)),
+        models = expand(config["out_analysis"] +
+                        "{iModel}_ols_{iSubset}.rds",
+                        iModel = MODELS,
+                        iSubset = DATA_SUBSET),
     params:
         filepath   = config["out_analysis"],
         model_expr = "model_solow*.rds"
