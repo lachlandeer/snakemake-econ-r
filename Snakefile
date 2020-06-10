@@ -58,6 +58,10 @@ rule renv_install:
     shell:
         "{runR} src/lib/install_renv.R"
 
+rule renv_consent:
+    shell:
+        "R -e renv::consent(provided = TRUE)"        
+
 ## renv_install: initialize a packrat environment for this project
 rule renv_init:
     shell:
