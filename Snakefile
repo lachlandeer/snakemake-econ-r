@@ -58,6 +58,7 @@ rule renv_install:
     shell:
         "{runR} src/lib/install_renv.R"
 
+## renv_consent: permission for renv to write files to system 
 rule renv_consent:
     shell:
         "R -e renv::consent(provided = TRUE)"        
