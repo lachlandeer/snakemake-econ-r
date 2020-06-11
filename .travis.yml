@@ -14,8 +14,8 @@ addons:
       - zlib1g-dev
       - libcurl4-openssl-dev
       - wget
-      - python3.7
-      - python3-pip
+    #   - python3.7
+    #   - python3-pip
 
 cache:
     directories:
@@ -23,6 +23,8 @@ cache:
     - $TRAVIS_BUILD_DIR/renv/library
 
 before_install:
+    - sudo apt-get update
+    - sudo apt-get install python3.7 python3-pip
     - pip3 install --upgrade setuptools pip
     - pip3 --no-cache-dir install -r requirements.txt
 
