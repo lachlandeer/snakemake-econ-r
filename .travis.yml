@@ -14,7 +14,7 @@ addons:
       - zlib1g-dev
       - libcurl4-openssl-dev
       - wget
-      - python3-pip
+      - python3.5
 
 cache:
     directories:
@@ -22,7 +22,7 @@ cache:
     - $TRAVIS_BUILD_DIR/renv/library
 
 before_install:
-    - pip --no-cache-dir install -r requirements.txt
+    - pip3 --no-cache-dir install -r requirements.txt
 
 install:
     - Rscript -e "install.packages('renv')"
