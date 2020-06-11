@@ -4,7 +4,7 @@
 
 * Contributors:
     - Lachlan Deer (@lachlandeer) [cre, aut]
-    - Julian Langer (@julianlanger)[cre,aut]
+    - Julian Langer (@julianlanger)[cre, aut]
 
 ## Introduction
 
@@ -12,25 +12,41 @@ We provide a template for a reproducible research project using `Snakemake` and 
 We use `Snakemake` to construct a set of *rules* that form a DAG that implements the entire research pipeline, starting with some data cleaning and finishing with compiling a pdf article and slides.
 The `R` language is used to perform all steps of our analysis and to compile our pdf documents (the latter via the `knitr`, `bookdown` and `rticles` packages).
 
+## Motivating Example
+
 Our example project involves replicating the main tables and figures of Mankiw, Romer and Weil's classic 1992 QJE article "[A Contribution to the Empirics of Economic Growth.](https://eml.berkeley.edu/~dromer/papers/MRW_QJE1992.pdf)"
 We hope by using an example that is simple in its methods readers focus on how we have chosen to assemble both pure R codes and the Snakemake rules that build our project, rather than getting lost on econometric methodologies.
 
-## How to Run the Example
+## Installation Instructions
+
+Follow these Steps to install the necessary software on your system
 
 ### Step 1: Installing Necessary Software
 You need to have the following software and packages installed:
 
-1. Python 3 (ideally python 3.6 or higher)
+1. Python 3 (Python 3.6 or higher)
 2. Snakemake (we'll install the correct version in a couple of lines time!)
-3. R (ideally R 3.6.1 or higher)
+3. R (Ideally R 3.6.1 or higher)
 
-#### Installing Python.
+#### Installing Python
 
-We provide instructions on how to install anaconda python [here](https://pp4rs.github.io/2020-uzh-installation-guide/python/)
+Either:
+
+1. Install Anaconda Python:
+    - We provide instructions on how to install anaconda python [here](https://pp4rs.github.io/2020-uzh-installation-guide/python/)
+2. Install Python using the deadsnakes ppa:
+    - Here's how to add the deadsnakes ppa and install Python 3.8
+    ```bash
+    $ sudo apt-get install software-properties-common
+    $ sudo add-apt-repository ppa:deadsnakes/ppa
+    $ sudo apt-get update
+    $ sudo apt-get install python3.8
+    ```
 
 #### Installing Snakemake
 
 We have included a `requirements.txt` file that we can use to install a specific version of snakemake.
+This makes sure that our example runs on your machine (or at least won't break because you use a different version of snakemake than we do)
 
 ``` bash
 pip3 install -r requirements.txt
@@ -81,11 +97,11 @@ snakemake --cores 1 renv_restore
 
 This will install all the packages we need. It may take a while.
 
-### Step 3: Running the Example
+## Running the Example
 
-Once steps 1 and 2 complete, we can run our project.
+Once the installation instructions are complete, we can run the project.
 The result will be 2 pdfs: (1) mrw_replication.pdf - a pdf with some figures and tables of results included; and
-(2) mrw_replication slides - some slides that also contain some figures and pdfs that were build using this project.
+(2) mrw_replication slides - a beamer slide deck that also contains some figures and pdfs that were produced by the workflow.
 
 To run the project, enter the following into the terminal:
 
