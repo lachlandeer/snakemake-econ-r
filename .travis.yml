@@ -22,8 +22,8 @@ cache:
     - $TRAVIS_BUILD_DIR/renv/library
 
 before_install:
-    - sudo apt-get update
-    - sudo apt-get install python3.7 python3-pip
+    - apt-get update
+    - apt-get install python3.7 python3-pip
     - pip3 install --upgrade setuptools pip
     - pip3 --no-cache-dir install -r requirements.txt
 
