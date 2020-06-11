@@ -1,4 +1,4 @@
-# subworkflow: paper
+# Rules: paper
 #
 # rticle-style: asa
 #

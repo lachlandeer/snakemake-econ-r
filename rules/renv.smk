@@ -1,4 +1,4 @@
-# subworkflow: renv
+# Rules: renv
 #
 # All Rules related to the R package `renv`
 #

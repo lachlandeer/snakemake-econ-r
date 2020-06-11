@@ -1,4 +1,4 @@
-# subworkflow: clean
+# Rules: clean
 #
 # Contributors: @lachlandeer, @julianlanger
 

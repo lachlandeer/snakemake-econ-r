@@ -1,4 +1,4 @@
-# subworkflow: help
+# Rules: help
 #
 # Contributors: @lachlandeer, @julianlanger
 

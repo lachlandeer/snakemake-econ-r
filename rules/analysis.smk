@@ -1,4 +1,4 @@
-# subworkflow: analysis
+# Rules: analysis
 #
 # Contributors: @lachlandeer, @julianlanger
 

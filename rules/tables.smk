@@ -1,4 +1,4 @@
-# subworkflow: tables
+# Rules: tables
 #
 # Contributors: @lachlandeer, @julianlanger
 

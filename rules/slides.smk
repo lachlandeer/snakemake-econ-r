@@ -1,4 +1,4 @@
-# subworkflow: slides
+# Rules: slides
 #
 # Contributors: @lachlandeer, @julianlanger
 

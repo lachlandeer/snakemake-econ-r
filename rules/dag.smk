@@ -1,4 +1,4 @@
-# subworkflow: dag
+# Rules: dag
 #
 # Generate Graphs of DAG and related content
 #

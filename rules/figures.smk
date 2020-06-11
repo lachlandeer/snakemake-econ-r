@@ -1,4 +1,4 @@
-# subworkflow: figures
+# Rules: figures
 #
 # Contributors: @lachlandeer, @julianlanger
 

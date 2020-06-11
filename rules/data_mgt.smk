@@ -1,4 +1,4 @@
-# subworkflow: data-management
+# Rules: data-management
 #
 # Contributors: @lachlandeer, @julianlanger
 
