@@ -111,6 +111,16 @@ snakemake --cores 1 all
 
 This will run through all the R scripts in order to complete the build of the project.
 
+## Visualization of the Workflow
+
+Snakemake workflows are a directed acyclic graph (DAG).
+We can visualize the relationship between the rules (a simplified view of the DAG) in our workflow:
+
+![Rulegraph for MRW Workflow](./rulegraph.png)
+
+Check out the rules in `./rules/dag.smk` for various visualizations of the workflow. 
+You will need to install `graphviz` to run these rules - we have included a rule inside `dag.smk` to install this for you. 
+
 ## Archiving `R` packages in a new project
 
 * If you are starting a new project, which is likely if you are using
