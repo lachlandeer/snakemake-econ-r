@@ -16,7 +16,6 @@ addons:
       - zlib1g-dev
       - libcurl4-openssl-dev
       - wget
-      - r-base
       - pandoc
     #   - python3-pip
     #   - python3.8
@@ -27,6 +26,10 @@ cache:
     - $TRAVIS_BUILD_DIR/renv/library
 
 before_install:
+    - add-apt-repository deb "https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/"
+    - apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
+    - apt get -qq update
+    - apt install r-base
     - pip3 install --upgrade setuptools pip
     - pip3 --no-cache-dir install -r requirements.txt
 
