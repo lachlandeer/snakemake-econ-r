@@ -19,7 +19,10 @@ addons:
       - pandoc
       - gcc
       - gfortran
-      - build-essentials
+      - liblapack-dev
+      - liblapack3
+      - libopenblas-base
+      - libopenblas-dev
     #   - python3-pip
     #   - python3.8
 
