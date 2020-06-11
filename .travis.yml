@@ -19,6 +19,7 @@ addons:
       - pandoc
       - gcc
       - gfortran
+      - build-essentials
     #   - python3-pip
     #   - python3.8
 
