@@ -6,7 +6,8 @@ sudo: false
 # safelist
 branches:
     only:
-    - feat/add-travis
+    - master
+    - dev
 
 addons:
   apt:
