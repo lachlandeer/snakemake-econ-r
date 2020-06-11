@@ -18,7 +18,6 @@ addons:
       - wget
       - pandoc
       - gcc
-      - gcc-fortran
     #   - python3-pip
     #   - python3.8
 
