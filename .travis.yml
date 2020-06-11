@@ -34,7 +34,7 @@ before_install:
     - pip3 --no-cache-dir install -r requirements.txt
 
 install:
-    - Rscript -e "install.packages('renv', 'tinytex')"
+    - Rscript -e "install.packages('renv')"
     - Rscript -e "renv::consent(provided=TRUE)"
     - Rscript -e "renv::restore()"
     - Rscript -e 'tinytex::install_tinytex()'
