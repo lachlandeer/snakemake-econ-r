@@ -1,4 +1,4 @@
-workflows: "workflows/"
+rules: "rules/"
 src: "src/"
 log: "logs/"
 out: "out/"
