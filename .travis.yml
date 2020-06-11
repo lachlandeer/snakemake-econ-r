@@ -17,7 +17,7 @@ addons:
       - libcurl4-openssl-dev
       - wget
       - python3.8
-      - python3-pip
+    #   - python3-pip
 
 cache:
     directories:
@@ -34,6 +34,7 @@ install:
     - Rscript -e "install.packages('renv')"
     - Rscript -e "renv::consent(provided=TRUE)"
     - Rscript -e "renv::restore()"
+    - python3 --version
 
 script:
     "snakemake all --cores 1"
