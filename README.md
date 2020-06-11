@@ -1,6 +1,8 @@
 # Reproducible Research Workflows with Snakemake and R
 
 [![Build Status](https://travis-ci.org/lachlandeer/snakemake-econ-r.svg?branch=master)](https://travis-ci.org/lachlandeer/snakemake-econ-r)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![lifecycle](https://img.shields.io/badge/version-0.2-red.svg)]()
 
 * Contributors:
     - Lachlan Deer (@lachlandeer) [cre, aut]
