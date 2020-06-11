@@ -26,7 +26,7 @@ cache:
     - $TRAVIS_BUILD_DIR/renv/library
 
 before_install:
-    - sudo add-apt-repository deb "https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/"
+    - sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/"
     - sudo apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
     - sudo apt get -qq update
     - sudo apt install r-base
