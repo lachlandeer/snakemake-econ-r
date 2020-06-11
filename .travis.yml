@@ -23,6 +23,7 @@ cache:
     - $TRAVIS_BUILD_DIR/renv/library
 
 before_install:
+    - pip3 install --upgrade setuptools pip
     - pip3 --no-cache-dir install -r requirements.txt
 
 install:
