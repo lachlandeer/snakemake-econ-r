@@ -1,10 +1,12 @@
 # Reproducible Research Workflows with Snakemake and R
 
+[![Build Status](https://travis-ci.org/lachlandeer/snakemake-econ-r.svg?branch=master)](https://travis-ci.org/lachlandeer/snakemake-econ-r)
+
 * Contributors:
     - Lachlan Deer (@lachlandeer) [cre, aut]
     - Julian Langer (@julianlanger)[cre,aut]
 
-## What this Repo Does
+## Introduction
 
 We provide a template for a reproducible research project using `Snakemake` and the `R` programming language.
 We use `Snakemake` to construct a set of *rules* that form a DAG that implements the entire research pipeline, starting with some data cleaning and finishing with compiling a pdf article and slides.
