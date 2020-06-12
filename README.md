@@ -4,10 +4,6 @@
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![lifecycle](https://img.shields.io/badge/version-0.2-red.svg)]()
 
-* Contributors:
-    - Lachlan Deer (@lachlandeer) [cre, aut]
-    - Julian Langer (@julianlanger)[cre, aut]
-
 ## Introduction
 
 We provide a template for a reproducible research project using `Snakemake` and the `R` programming language.
@@ -141,6 +137,6 @@ You will need to install `graphviz` to run these rules - we have included a rule
 snakemake --cores 1 renv_snap
 ```
 
-## Suggested Citation:
+## Suggested Citation
 
 Deer, Lachlan and Julian Langer. 2020. Reproducible Economics Research Workflows with Snakemake.
