@@ -114,7 +114,7 @@ This will run through all the R scripts in order to complete the build of the pr
 Snakemake workflows are a directed acyclic graph (DAG).
 We can visualize the relationship between the rules (a simplified view of the DAG) in our workflow:
 
-![Rulegraph for MRW Workflow](./rulegraph.png)
+![Rulegraph for MRW Workflow](./assets/rulegraph.png)
 
 Check out the rules in `./rules/dag.smk` for various visualizations of the workflow. 
 You will need to install `graphviz` to run these rules - we have included a rule inside `dag.smk` to install this for you. 
