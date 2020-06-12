@@ -137,6 +137,16 @@ You will need to install `graphviz` to run these rules - we have included a rule
 snakemake --cores 1 renv_snap
 ```
 
+## Updates to Workflow Example
+
+We plan to periodically update the workflow as we find better/simpler ways to do things and as our opinions on best practice evolve.
+Major changes are tracked in the [NEWS file](./NEWS.md) with brief descriptions of the changes implemented.
+
+## Comments / Suggestions / Issues
+
+We'd love to hear your comments, suggestions or installation issues encountered when running the example.
+[Post an issue on Github.](https://github.com/lachlandeer/snakemake-econ-r/issues)
+
 ## Suggested Citation
 
 Deer, Lachlan and Julian Langer. 2020. Reproducible Economics Research Workflows with Snakemake.
