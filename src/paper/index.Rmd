@@ -26,3 +26,9 @@ documentclass: book
 bibliography: references.bib
 link-citations: yes
 ---
+
+```{r eval=TRUE, echo = FALSE}
+# we don't actually use this - chunk's load of the rtciles library
+# but it ensures that renv indexes the package in the renv.lock file
+library(rticles)
+```
