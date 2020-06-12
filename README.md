@@ -19,14 +19,13 @@ We hope by using an example that is simple in its methods readers focus on how w
 
 Follow these Steps to install the necessary software on your system
 
-### Step 1: Installing Necessary Software
 You need to have the following software and packages installed:
 
 1. Python 3 (Python 3.6 or higher)
 2. Snakemake (we'll install the correct version in a couple of lines time!)
 3. R (Ideally R 3.6.1 or higher)
 
-#### Installing Python
+### Installing Python
 
 Either:
 
@@ -41,7 +40,7 @@ Either:
     $ sudo apt-get install python3.8
     ```
 
-#### Installing Snakemake
+### Installing Snakemake
 
 We have included a `requirements.txt` file that we can use to install a specific version of snakemake.
 This makes sure that our example runs on your machine (or at least won't break because you use a different version of snakemake than we do)
@@ -56,11 +55,11 @@ you may need to replace `pip3` with `pip`
 In this example, we encourage the use of a single core, so when we use snakemake we will always write it as `snakemake --cores 1 <something>`.
 More cores speeds things up, but our example is quite light so it seems unnecessary.
 
-#### Installing `R`
+### Installing `R`
 
 We provide instructions on how to install R [here](https://pp4rs.github.io/2020-uzh-installation-guide/r)
 
-### Step 2: Install the Required `R` libraries.
+### Install the Required `R` libraries.
 
 We utilize many additional R packages inside the scripts that build our project.
 To ensure that our project runs on every machine without issues relating to R packages not being installed we utilize `renv` to control the list of packages needed to run this example, and to monitor the version of the package we use.
