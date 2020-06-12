@@ -1,4 +1,4 @@
-# Reproducible Research Workflows with Snakemake and R
+# A Reproducible Workflow for Economics Research Using Snakemake and R
 
 [![Build Status](https://travis-ci.org/lachlandeer/snakemake-econ-r.svg?branch=master)](https://travis-ci.org/lachlandeer/snakemake-econ-r)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
@@ -7,8 +7,10 @@
 ## Introduction
 
 We provide a template for a reproducible research project using `Snakemake` and the `R` programming language.
-We use `Snakemake` to construct a set of *rules* that form a DAG that implements the entire research pipeline, starting with some data cleaning and finishing with compiling a pdf article and slides.
+We use `Snakemake` to construct a set of *rules* that form a DAG that implements the entire research pipeline, starting with some data cleaning, running some regressions, constructung figures and tables, and then finishing with compiling a pdf article and slides.
+We believe this mimics an approximate workflow of most empirical research in economics.
 The `R` language is used to perform all steps of our analysis and to compile our pdf documents (the latter via the `knitr`, `bookdown` and `rticles` packages).
+`Snakemake` allows us to construct a set of interconnect rules to build our workflow from start to finish - and to partially update the build where required when we update our scripts, data and parameters.
 
 ## Motivating Example
 
@@ -148,4 +150,4 @@ We'd love to hear your comments, suggestions or installation issues encountered 
 
 ## Suggested Citation
 
-Deer, Lachlan and Julian Langer. 2020. Reproducible Economics Research Workflows with Snakemake.
+Deer, Lachlan and Julian Langer. 2020. A Reproducible Workflow for Economics Research Using Snakemake and R.
