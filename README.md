@@ -61,7 +61,20 @@ More cores speeds things up, but our example is quite light so it seems unnecess
 
 We provide instructions on how to install R [here](https://pp4rs.github.io/2020-uzh-installation-guide/r)
 
-### Install the Required `R` libraries.
+### Installing pandoc and LaTeX
+
+Because we want to generate pdf outputs we need two additional bits of software to make that happen:
+
+* If you do not have RStudio installed, you will have to install Pandoc (http://pandoc.org)
+* If you do not have LaTeX installed, we recommend that you install TinyTeX (https://yihui.name/tinytex/)
+  * TinyTeX is a lightweight, portable, cross-platform, and easy-to-maintain LaTeX distribution.
+  - From inside R:
+    ```{r}
+    install.packages('tinytex')
+    tinytex::install_tinytex()  # install TinyTeX
+    ```
+
+### Install the Required `R` libraries
 
 We utilize many additional R packages inside the scripts that build our project.
 To ensure that our project runs on every machine without issues relating to R packages not being installed we utilize `renv` to control the list of packages needed to run this example, and to monitor the version of the package we use.
