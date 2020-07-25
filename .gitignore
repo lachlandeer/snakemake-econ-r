@@ -12,3 +12,4 @@ _book
 *.log
 .Rprofile
 test.R
+*.Rproj
