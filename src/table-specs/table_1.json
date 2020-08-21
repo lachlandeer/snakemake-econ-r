@@ -1,0 +1,12 @@
+{
+    "name": "tab01_textbook_solow.R",
+    "title": "Estimation of the Textbook Solow Model",
+    "dep.var.labels": "log(GDP per capita in 1965)",
+    "column.labels": "c('Non-Oil', 'Intermediate', 'OECD',
+                        'Non-Oil', 'Intermediate', 'OECD')",
+    "covariate.labels": "c('log(I / GDP)',
+                           'log(n + g + $\\delta$)',
+                           'log(I / GDP) - log(n + g + $\\delta$)')",
+    "add.lines": "list(c('Restricted Model', 'No', 'No', 'No', 'Yes', 'Yes', 'Yes')",
+}
+
