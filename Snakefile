@@ -17,7 +17,8 @@ MODELS = glob_wildcards(config["src_model_specs"] + "{fname}.json").fname
 # plots we want to build
 PLOTS = glob_wildcards(config["src_figures"] + "{fname}.R").fname
 # tables to generate
-TABLES = glob_wildcards(config["src_tables"] + "{fname}.R").fname
+TABLES = glob_wildcards(config["src_table_specs"] + "{fname}.R").fname
+print(TABLES)
 
 # --- Variable Declarations ---- #
 runR = "Rscript --no-save --no-restore --verbose"
