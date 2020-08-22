@@ -1,8 +1,8 @@
-#' tab03_ucc_solow.R
+#' table-main.R
 #'
-#' contributors: @lachlandeer, @julianlanger
+#' contributors: @lachlandeer, @julianlanger, @bergmul
 #'
-#' Table for unconditional convergence of textbook solow model, Table 3 of MRW
+#' Creates MRW tables according to specification
 #'
 
 # Libraries
@@ -18,6 +18,11 @@ option_list = list(
                type = "character",
                default = NULL,
                help = "A directory path where models are saved",
+               metavar = "character"),
+    make_option(c("-s", "--spec"),
+               type = "character",
+               default = NULL,
+               help = "Input filename table spec",
                metavar = "character"),
    make_option(c("-m", "--models"),
                type = "character",
@@ -38,6 +43,10 @@ if (is.null(opt$filepath)){
  print_help(opt_parser)
  stop("Input filepath must be provided", call. = FALSE)
 }
+if (is.null(opt$spec)){
+ print_help(opt_parser)
+ stop("Input spec must be provided", call. = FALSE)
+}
 if (is.null(opt$models)){
  print_help(opt_parser)
  stop("A regex of model names must be provided", call. = FALSE)
@@ -45,6 +54,7 @@ if (is.null(opt$models)){
 
 # Load Files
 dir_path  <- opt$filepath
+s_name    <- opt$spec
 f_names   <- opt$models
 models    <- paste0(dir_path, f_names)
 file_list <- Sys.glob(models)
@@ -57,24 +67,5 @@ data <- file_list %>%
             map(list.load) %>%
             setNames(model_names)
 
-# Create Table
-stargazer(data$model_ucc_ols_subset_nonoil,
-          data$model_ucc_ols_subset_intermediate,
-          data$model_ucc_ols_subset_oecd,
-          initial.zero = TRUE,
-          align = FALSE,
-          style = "qje",
-          title = "Test for Unconditional Convergence",
-          dep.var.labels = "Log(GDP '85) - Log(GDP '60)",
-          column.labels = c("Non-Oil", "Intermediate", "OECD"),
-          covariate.labels = c("log(GDP per capita 1960)"
-                               ),
-          omit.stat = c("rsq", "ser", "F"),
-          df = FALSE,
-          digits = 3,
-          font.size = "scriptsize",
-          table.layout ="-dc#-t-a-s=n",
-          no.space = TRUE,
-          type = "latex",
-          out = opt$out
-          )
+# Create Table according to table spec
+source(s_name)
