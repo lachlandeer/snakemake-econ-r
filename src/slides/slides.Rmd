@@ -2,11 +2,13 @@
 title: "Replicating MRW with Snakemake"
 subtitle: "A guide to workflow management"
 author:
-  - "Lachlan Deer$^2$"
-  - "Julian Langer$^1$"
+  - "Lachlan Deer$^1$"
+  - "Julian Langer$^2$"
+  - "Ulrich Bergmann$^3$"
 institute:
-   - $^2$Chicago Booth School of Business
-   - $$^1$University of Zurich
+   - $^1$Chicago Booth School of Business
+   - $^2$Harvard Law School
+   - $^3$University of Zurich
 date: "`r Sys.Date()`"
 output:
   beamer_presentation:

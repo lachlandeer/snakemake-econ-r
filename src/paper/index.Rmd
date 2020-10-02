@@ -10,7 +10,10 @@ authors:
   affiliation: University of Chicago Booth School of Business
 
 - name: Julian Langer
-  affiliation: Department of Economics, University of Zurich
+  affiliation: Harvard Law School
+
+- name: Ulrich Bergmann
+  affiliation: University of Zurich
 
 keywords:
 - 3 to 6 keywords
