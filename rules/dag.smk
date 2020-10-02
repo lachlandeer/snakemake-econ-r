@@ -32,6 +32,16 @@ rule rulegraph:
     shell:
         "snakemake --rulegraph | dot -Tpdf > {output}"
 
+## rulegraph_to_png
+rule rulegraph_to_png:
+    input:
+        "rulegraph.pdf"
+    output:
+        "assets/rulegraph.png"
+    shell:
+        "pdftoppm -png {input} > {output}"
+
+
 # --- INSTALL GRAPHVIZ --- #
 
 ## install_graphviz   : install necessary packages to visualize Snakemake workflow 
