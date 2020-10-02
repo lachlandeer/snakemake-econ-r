@@ -1,6 +1,6 @@
 # Rules: data-management
 #
-# Contributors: @lachlandeer, @julianlanger
+# Contributors: @lachlandeer, @julianlanger, @bergmul
 
 # --- Build Rules --- #
 ## gen_regression_vars: creates the set of variables needed to produce MRW results

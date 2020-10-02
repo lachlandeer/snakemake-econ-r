@@ -1,6 +1,6 @@
 # Rules: analysis
 #
-# Contributors: @lachlandeer, @julianlanger
+# Contributors: @lachlandeer, @julianlanger, @bergmul
 
 # --- Build Rules --- #
 ## estimate_models  : Helper rule that runs all regression models by expanding wildcards

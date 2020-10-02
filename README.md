@@ -163,4 +163,4 @@ We'd love to hear your comments, suggestions or installation issues encountered 
 
 ## Suggested Citation
 
-Deer, Lachlan and Julian Langer. 2020. A Reproducible Workflow for Economics Research Using Snakemake and R.
+Deer, Lachlan and Julian Langer and Ulrich Bergmann. 2020. A Reproducible Workflow for Economics Research Using Snakemake and R.

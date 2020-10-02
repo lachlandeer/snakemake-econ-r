@@ -2,7 +2,7 @@
 #
 # All Rules related to the R package `renv`
 #
-# contributors: @lachlandeer, @julianlanger
+# contributors: @lachlandeer, @julianlanger, @bergmul
 
 # --- renv rules --- #
 

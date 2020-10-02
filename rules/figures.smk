@@ -1,6 +1,6 @@
 # Rules: figures
 #
-# Contributors: @lachlandeer, @julianlanger
+# Contributors: @lachlandeer, @julianlanger, @bergmul
 
 ## make_figs: Helper rule to expand wildcard and generate all figures
 rule make_figs:

@@ -2,7 +2,7 @@
 #
 # rticle-style: asa
 #
-# contributors: @lachlandeer, @julianlanger
+# contributors: @lachlandeer, @julianlanger, @bergmul
 
 # --- Dictionaries --- #
 RMD_FILES  = glob.glob(config["src_paper"] + "*.Rmd")

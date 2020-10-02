@@ -1,5 +1,5 @@
 # Main Workflow - MRW Replication
-# Contributors: @lachlandeer, @julianlanger
+# Contributors: @lachlandeer, @julianlanger, @bergmul
 
 import glob
 

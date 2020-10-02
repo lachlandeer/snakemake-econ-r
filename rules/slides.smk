@@ -1,6 +1,6 @@
 # Rules: slides
 #
-# Contributors: @lachlandeer, @julianlanger
+# Contributors: @lachlandeer, @julianlanger, @bergmul
 
 # --- Build Rules --- #
 ## slides2root:    move slides to root directory

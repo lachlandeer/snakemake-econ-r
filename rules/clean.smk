@@ -1,6 +1,6 @@
 # Rules: clean
 #
-# Contributors: @lachlandeer, @julianlanger
+# Contributors: @lachlandeer, @julianlanger, @bergmul
 
 ## clean_output   : delete all built files in project's output and ROOT directory
 rule clean_output:

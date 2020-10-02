@@ -2,7 +2,7 @@
 #
 # Generate Graphs of DAG and related content
 #
-# Contributors: @lachlandeer, @julianlanger
+# Contributors: @lachlandeer, @julianlanger, @bergmul
 
 ## dag                : create the DAG as a pdf from the Snakefile
 rule dag:
