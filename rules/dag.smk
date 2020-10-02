@@ -53,3 +53,8 @@ rule graphviz:
 rule graphviz_mac:
     shell:
         "brew install graphviz"
+
+## install_poppler: install poppler-utils on ubuntu
+rule install_poppler:
+    shell:
+        "sudo apt-get install -y poppler-utils"
