@@ -32,6 +32,16 @@ rule rulegraph:
     shell:
         "snakemake --rulegraph | dot -Tpdf > {output}"
 
+## rulegraph_to_png
+rule rulegraph_to_png:
+    input:
+        "rulegraph.pdf"
+    output:
+        "assets/rulegraph.png"
+    shell:
+        "pdftoppm -png {input} > {output}"
+
+
 # --- INSTALL GRAPHVIZ --- #
 
 ## install_graphviz   : install necessary packages to visualize Snakemake workflow 
@@ -43,3 +53,8 @@ rule graphviz:
 rule graphviz_mac:
     shell:
         "brew install graphviz"
+
+## install_poppler: install poppler-utils on ubuntu
+rule install_poppler:
+    shell:
+        "sudo apt-get install -y poppler-utils"

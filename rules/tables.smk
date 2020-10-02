@@ -1,137 +1,31 @@
 # Rules: tables
 #
-# Contributors: @lachlandeer, @julianlanger
+# Contributors: @lachlandeer, @julianlanger, @bergmul
 
 # --- Build Rules --- #
-## aug_restr_conditional_convergence:
-rule aug_restr_conditional_convergence:
+
+# one table to rule them all
+rule make_tables:
     input:
-        script = config["src_tables"] + "tab06_cc_aug_solow_restr.R",
+        script = config["src_tables"] + "table-main.R",
+# TODO: generalize to all files in folder
+        spec   = config["src_table_specs"] + "{iTable}.R",
         models = expand(config["out_analysis"] +
                         "{iModel}_ols_{iSubset}.rds",
                         iModel = MODELS,
                         iSubset = DATA_SUBSET),
     params:
         filepath   = config["out_analysis"],
-        model_expr = "model_aug_cc_restr*.rds"
+# TODO: fix model expression hack - for now always read all models
+        model_expr = "*.rds"
     output:
-        table = config["out_tables"] + "tab06_cc_aug_solow_restr.tex",
+        table = config["out_tables"] + "{iTable}.tex"
     log:
-        config["log"] + "tables/tab06_cc_aug_solow_restr.txt"
+        config["log"] + "tables/{iTable}.txt"
     shell:
         "{runR} {input.script} \
             --filepath {params.filepath} \
+            --spec {input.spec} \
             --models {params.model_expr} \
             --out {output.table} \
-            > {log} {logAll}"
-
-
-## aug_conditional_convergence:
-rule aug_conditional_convergence:
-    input:
-        script = config["src_tables"] + "tab05_cc_aug_solow.R",
-        models = expand(config["out_analysis"] +
-                        "{iModel}_ols_{iSubset}.rds",
-                        iModel = MODELS,
-                        iSubset = DATA_SUBSET),
-    params:
-        filepath   = config["out_analysis"],
-        model_expr = "model_aug_cc_ols*.rds"
-    output:
-        table = config["out_tables"] + "tab05_cc_aug_solow.tex",
-    log:
-        config["log"] + "tables/tab05_cc_aug_solow.txt"
-    shell:
-        "{runR} {input.script} \
-            --filepath {params.filepath} \
-            --models {params.model_expr} \
-            --out {output.table} \
-            > {log} {logAll}"
-
-## conditional_convergence:
-rule conditional_convergence:
-    input:
-        script = config["src_tables"] + "tab04_cc_solow.R",
-        models = expand(config["out_analysis"] +
-                        "{iModel}_ols_{iSubset}.rds",
-                        iModel = MODELS,
-                        iSubset = DATA_SUBSET),
-    params:
-        filepath   = config["out_analysis"],
-        model_expr = "model_cc*.rds"
-    output:
-        table = config["out_tables"] + "tab04_cc_solow.tex",
-    log:
-        config["log"] + "tables/tab04_cc_solow.txt"
-    shell:
-        "{runR} {input.script} \
-            --filepath {params.filepath} \
-            --models {params.model_expr} \
-            --out {output.table} \
-            > {log} {logAll}"
-
-## unconditional_convergence:
-rule unconditional_convergence:
-    input:
-        script = config["src_tables"] + "tab03_ucc_solow.R",
-        models = expand(config["out_analysis"] +
-                        "{iModel}_ols_{iSubset}.rds",
-                        iModel = MODELS,
-                        iSubset = DATA_SUBSET),
-    params:
-        filepath   = config["out_analysis"],
-        model_expr = "model_ucc*.rds"
-    output:
-        table = config["out_tables"] + "tab03_ucc_solow.tex",
-    log:
-        config["log"] + "tables/tab03_ucc_solow.txt"
-    shell:
-        "{runR} {input.script} \
-            --filepath {params.filepath} \
-            --models {params.model_expr} \
-            --out {output.table} \
-            > {log} {logAll}"
-
-## augment_solow: construct a table of estimates for augmented solow model
-rule augment_solow:
-    input:
-        script = config["src_tables"] + "tab02_augment_solow.R",
-        models = expand(config["out_analysis"] +
-                        "{iModel}_ols_{iSubset}.rds",
-                        iModel = MODELS,
-                        iSubset = DATA_SUBSET),
-    params:
-        filepath   = config["out_analysis"],
-        model_expr = "model_aug_solow*.rds"
-    output:
-        table = config["out_tables"] + "tab02_augment_solow.tex",
-    log:
-        config["log"] + "tables/tab02_augment_solow.txt"
-    shell:
-        "{runR} {input.script} \
-            --filepath {params.filepath} \
-            --models {params.model_expr} \
-            --out {output.table} \
-            > {log} {logAll}"
-
-## textbook_solow: construct a table of estimates for textbook solow model
-rule textbook_solow:
-    input:
-        script = config["src_tables"] + "tab01_textbook_solow.R",
-        models = expand(config["out_analysis"] +
-                        "{iModel}_ols_{iSubset}.rds",
-                        iModel = MODELS,
-                        iSubset = DATA_SUBSET),
-    params:
-        filepath   = config["out_analysis"],
-        model_expr = "model_solow*.rds"
-    output:
-        table = config["out_tables"] + "tab01_textbook_solow.tex",
-    log:
-        config["log"] + "tables/tab01_textbook_solow.txt"
-    shell:
-        "{runR} {input.script} \
-            --filepath {params.filepath} \
-            --models {params.model_expr} \
-            --out {output.table} \
-            > {log} {logAll}"
+            > {log} {logAll}"        
