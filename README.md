@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/lachlandeer/snakemake-econ-r.svg?branch=master)](https://travis-ci.org/lachlandeer/snakemake-econ-r)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![lifecycle](https://img.shields.io/badge/version-0.2-red.svg)]()
+[![lifecycle](https://img.shields.io/badge/version-0.3-red.svg)]()
 
 ## Introduction
 
@@ -25,7 +25,7 @@ You need to have the following software and packages installed:
 
 1. Python 3 (Python 3.6 or higher)
 2. Snakemake (we'll install the correct version in a couple of lines time!)
-3. R (Ideally R 3.6.1 or higher)
+3. R (Ideally R 3.6.x, we are working on version 4.x support)
 
 ### Installing Python
 
