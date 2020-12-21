@@ -13,3 +13,4 @@ _book
 .Rprofile
 test.R
 *.Rproj
+.DS_Store
