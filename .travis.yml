@@ -6,8 +6,8 @@ sudo: false
 # safelist
 branches:
     only:
-    # - master
-    # - dev
+    - master
+    - dev
     - port2R4
 
 addons:
