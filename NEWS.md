@@ -1,5 +1,10 @@
 # snakemake-econ-r
 
+## Version 0.4.0 (2021/01/27)
+
+* Compatible with R version 4.0.x via via [PR #7](https://github.com/lachlandeer/snakemake-econ-r/pull/7)
+* Update Snakemake to version 5.32.0
+
 ## Version 0.3.0 (2020/10/2)
 
 * Updated the version of Snakemake the example is compatible with (now Snakemake 5.26.1)
