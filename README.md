@@ -25,8 +25,9 @@ You need to have the following software and packages installed:
 
 1. Python 3 (Python 3.6 or higher)
 2. Snakemake (we'll install the correct version in a couple of lines time!)
-3. R (Ideally R 3.6.x, we are working on version 4.x support)
-
+3. R (version 3.6.x)
+   * For R version 4.0.x see master branch [here](https://github.com/lachlandeer/snakemake-econ-r/).
+  
 ### Installing Python
 
 Either:
@@ -163,4 +164,4 @@ We'd love to hear your comments, suggestions or installation issues encountered 
 
 ## Suggested Citation
 
-Deer, Lachlan and Julian Langer and Ulrich Bergmann. 2020. A Reproducible Workflow for Economics Research Using Snakemake and R.
+Deer, Lachlan and Julian Langer and Ulrich Bergmann. 2021. A Reproducible Workflow for Economics Research Using Snakemake and R.
