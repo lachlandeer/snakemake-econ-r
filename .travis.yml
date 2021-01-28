@@ -8,6 +8,7 @@ branches:
     only:
     - master
     - dev
+    - port2R4
 
 addons:
   apt:
@@ -25,7 +26,7 @@ cache:
     - $TRAVIS_BUILD_DIR/renv/library
 
 before_install:
-    - sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/"
+    - sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran40/"
     - sudo apt-key adv --keyserver keys.gnupg.net --recv-key 'E298A3A825C0D65DFD57CBB651716619E084DAB9'
     - sudo apt-get update
     - sudo apt install --allow-unauthenticated r-base r-base-dev

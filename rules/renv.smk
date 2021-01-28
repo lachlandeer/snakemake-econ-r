@@ -14,7 +14,7 @@ rule renv_install:
 ## renv_consent: permission for renv to write files to system 
 rule renv_consent:
     shell:
-        "R -e renv::consent(provided = TRUE)"        
+        "R -e 'renv::consent(provided = TRUE)'"
 
 ## renv_install: initialize a renv environment for this project
 rule renv_init:

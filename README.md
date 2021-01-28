@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/lachlandeer/snakemake-econ-r.svg?branch=master)](https://travis-ci.org/lachlandeer/snakemake-econ-r)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![lifecycle](https://img.shields.io/badge/version-0.2-red.svg)]()
+[![lifecycle](https://img.shields.io/badge/version-0.4-red.svg)]()
 
 ## Introduction
 
@@ -25,7 +25,8 @@ You need to have the following software and packages installed:
 
 1. Python 3 (Python 3.6 or higher)
 2. Snakemake (we'll install the correct version in a couple of lines time!)
-3. R (Ideally R 3.6.1 or higher)
+3. R (version 4.0.x)
+   * For R version 3.6.x see an archived version [here](https://github.com/lachlandeer/snakemake-econ-r/tree/archive/r-3.6).
 
 ### Installing Python
 
@@ -163,4 +164,4 @@ We'd love to hear your comments, suggestions or installation issues encountered 
 
 ## Suggested Citation
 
-Deer, Lachlan and Julian Langer and Ulrich Bergmann. 2020. A Reproducible Workflow for Economics Research Using Snakemake and R.
+Deer, Lachlan and Julian Langer and Ulrich Bergmann. 2021. A Reproducible Workflow for Economics Research Using Snakemake and R.
