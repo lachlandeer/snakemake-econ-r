@@ -11,9 +11,32 @@ knitr::include_graphics("../../out/figures/unconditional_convergence.pdf")
 
 ### With Subfigures
 
-In progress
-```{r fig-sub, echo = FALSE, fig.cap = 'Convergence Plots', fig.subcap = c('Unconditional Convergence', 'Conditonal Convergence', 'Conditonal Convergence - Augmented Model'), fig.show = "hold", out.width = '.75\\linewidth', fig.asp = 1, fig.ncol = 1, fig.height = 2}
-knitr::include_graphics( c("../../out/figures/unconditional_convergence.pdf",
-                            "../../out/figures/conditional_convergence.pdf",
-                            "../../out/figures/aug_conditional_convergence.pdf"))
-```
+\begin{figure}[h!]
+        \caption{\small{Figure Caption}}
+        \begin{subfigure}[b]{0.475\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{../../out/figures/unconditional_convergence.pdf}
+            \caption{\small{Subcaption to edit}}
+            \label{fig:subfig1}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.475\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{../../out/figures/conditional_convergence.pdf}
+            \caption{\small{Subcaption to edit}}
+            \label{fig:subfig1}
+        \end{subfigure}
+        \vskip\baselineskip
+        \begin{subfigure}[b]{0.475\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{../../out/figures/aug_conditional_convergence.pdf}
+            \caption{\small{Subcaption to edit}}
+            \label{fig:subfig1}
+        \end{subfigure}
+        \hfill
+\begin{fignote}
+    \textit{Notes}: Figure Level notes
+\end{fignote}
+\end{figure}
+
+\newpage
