@@ -12,14 +12,14 @@ institute:
 date: "`r Sys.Date()`"
 output:
   beamer_presentation:
-    # includes: 
-    #   in_header: preamble.tex
     latex_engine: xelatex
     theme: "default"
     colortheme: "default"
     fonttheme: "default"
     slide_level: 2
     keep_tex: TRUE
+    includes: 
+      in_header: preamble.tex
 ---
 
 ## Motivation
