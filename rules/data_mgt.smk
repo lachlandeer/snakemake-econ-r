@@ -7,8 +7,7 @@
 rule gen_regression_vars:
     input:
         script = config["src_data_mgt"] + "gen_reg_vars.R",
-        data   = config["out_data"] + "mrw_renamed.csv",
-        params = config["src_data_mgt"] + "param_solow.json",
+        data   = config["out_data"] + "mrw_renamed.csv"
     output:
         data = config["out_data"] + "mrw_complete.csv",
     params:
