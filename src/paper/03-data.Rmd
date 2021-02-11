@@ -24,14 +24,14 @@ knitr::include_graphics("../../out/figures/unconditional_convergence.pdf")
             \centering
             \includegraphics[width=\textwidth]{../../out/figures/conditional_convergence.pdf}
             \caption{\small{Subcaption to edit}}
-            \label{fig:subfig1}
+            \label{fig:subfig2}
         \end{subfigure}
         \vskip\baselineskip
         \begin{subfigure}[b]{0.475\textwidth}
             \centering
             \includegraphics[width=\textwidth]{../../out/figures/aug_conditional_convergence.pdf}
             \caption{\small{Subcaption to edit}}
-            \label{fig:subfig1}
+            \label{fig:subfig3}
         \end{subfigure}
         \hfill
 \begin{fignote}
