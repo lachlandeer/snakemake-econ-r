@@ -21,6 +21,7 @@ rule build_beamer:
                         "tab03_ucc_solow.tex",
         figures   = config["out_figures"] +
                             "unconditional_convergence.pdf",
+        preamble  = config["src_slides"] + "preamble.tex"
     output:
         pdf = config["out_slides"] + PROJ_NAME + "_slides.pdf"
     log:
