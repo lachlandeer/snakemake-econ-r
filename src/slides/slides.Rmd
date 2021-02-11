@@ -12,8 +12,8 @@ institute:
 date: "`r Sys.Date()`"
 output:
   beamer_presentation:
-    includes: 
-      in_header: preamble.tex
+    # includes: 
+    #   in_header: preamble.tex
     latex_engine: xelatex
     theme: "default"
     colortheme: "default"
@@ -48,32 +48,3 @@ output:
 ```{r, echo = FALSE, fig.align = "center", out.width = '.70\\linewidth', fig.cap = "No Support for Unconditional Convergence"}
 knitr::include_graphics("../../out/figures/unconditional_convergence.pdf")
 ```
-
-## Subfigures
-
-\begin{figure}[h!]
-        \caption{\small{Figure Caption}}
-        \begin{subfigure}[b]{0.3\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{../../out/figures/unconditional_convergence.pdf}
-            \caption{\small{Subcaption to edit}}
-            \label{fig:subfig1}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[b]{0.3\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{../../out/figures/conditional_convergence.pdf}
-            \caption{\small{Subcaption to edit}}
-            \label{fig:subfig2}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[b]{0.3\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{../../out/figures/aug_conditional_convergence.pdf}
-            \caption{\small{Subcaption to edit}}
-            \label{fig:subfig3}
-        \end{subfigure}
-\begin{fignote}
-    \textit{Notes}: Figure Level notes
-\end{fignote}
-\end{figure}
