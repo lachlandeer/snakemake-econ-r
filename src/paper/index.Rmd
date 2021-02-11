@@ -7,7 +7,7 @@ blinded: 0
 authors:
 - name: Lachlan Deer
   thanks: Corresponding author. We probably want to thank many people.
-  affiliation: University of Chicago Booth School of Business
+  affiliation: Dept. of Marketing, Tilburg University
 
 - name: Julian Langer
   affiliation: Harvard Law School

@@ -6,7 +6,7 @@ author:
   - "Julian Langer$^2$"
   - "Ulrich Bergmann$^3$"
 institute:
-   - $^1$Chicago Booth School of Business
+   - $^1$Dept. of Marketing, TiSEM
    - $^2$Harvard Law School
    - $^3$University of Zurich
 date: "`r Sys.Date()`"
