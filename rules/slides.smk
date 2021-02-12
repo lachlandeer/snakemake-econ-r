@@ -19,8 +19,10 @@ rule build_beamer:
         rmd_file  = config["src_slides"] + "slides.Rmd",
         tables    = config["out_tables"] +
                         "tab03_ucc_solow.tex",
-        figures   = config["out_figures"] +
-                            "unconditional_convergence.pdf",
+        figures   = expand(config["out_figures"] +
+                            "{iPlot}.pdf",
+                            iPlot = PLOTS),
+        preamble  = config["src_slides"] + "preamble.tex"
     output:
         pdf = config["out_slides"] + PROJ_NAME + "_slides.pdf"
     log:

@@ -19,10 +19,10 @@ option_list = list(
                 help = "a csv file name",
                 metavar = "character"),
     make_option(c("-p", "--param"),
-                type = "character",
-                default = NULL,
-                help = "a file name containing model parameters",
-                metavar = "character"),
+                type = "numeric",
+                default = 0.05,
+                help = "Solow's Constant, as a numeric [default = %default]",
+                metavar = "numeric"),
 	make_option(c("-o", "--out"),
                 type = "character",
                 default = "out.csv",
@@ -37,15 +37,11 @@ if (is.null(opt$data)){
   print_help(opt_parser)
   stop("Input data must be provided", call. = FALSE)
 }
-if (is.null(opt$param)){
-  print_help(opt_parser)
-  stop("Model Parameters must be provided", call. = FALSE)
-}
 
 # Load data
 print("Loading data")
 mrw_data <- read_csv(opt$data)
-model_params <- fromJSON(file = opt$param)
+solow_const <- as.numeric(opt$param)
 
 # Generate Variables
 print("Creating Variables")
@@ -58,7 +54,7 @@ mrw_data <- mrw_data %>%
                          intermediate = factor(intermediate),
                          oecd = factor(oecd),
                          ln_ndg = log(pop_growth_60_85/100 +
-                                        model_params$DELTA_GAMMA),
+                                        solow_const),
                          ln_school = log(school/100)) %>%
                   select(country, ln_gdp_85, ln_gdp_60, ln_inv_gdp,
                          non_oil, intermediate, oecd,
