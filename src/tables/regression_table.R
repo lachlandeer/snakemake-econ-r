@@ -83,7 +83,8 @@ gm <- list(
 tab <- modelsummary(reg,
                     fmt = "%.2f",
                     # coef map is constant across regression tables
-                    coef_map = c(    'ln_inv_gdp' = 'log(I / GDP)',
+                    coef_map = c(    'ln_gdp_60' = 'log(GDP per capita 1960)',
+                                     'ln_inv_gdp' = 'log(I / GDP)',
                                      'ln_ndg' = 'log(n + g + $\\delta$)',
                                      'ln_school' = 'log(school)',
                                      'I(ln_inv_gdp - ln_ndg)'=  'log(I / GDP) - log(n + g + $\\delta$)',
