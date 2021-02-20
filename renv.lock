@@ -536,10 +536,8 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.12.5-15",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "47715113b865afc69984cc9619168c68"
+      "Version": "0.12.5",
+      "Source": "Repository"
     },
     "rjson": {
       "Package": "rjson",
