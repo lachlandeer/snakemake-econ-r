@@ -11,7 +11,7 @@ rule make_tables:
                 iTable = TABLES)
 
 # table: build one table
-rule table:
+rule tables:
     input:
         script = config["src_tables"] + "regression_table.R",
         spec   = config["src_table_specs"] + "{iTable}.json",

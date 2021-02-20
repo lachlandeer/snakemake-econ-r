@@ -11,8 +11,8 @@ rule estimate_models:
                             iModel = MODELS,
                             iSubset = DATA_SUBSET)
 
-## model        : Estimate an regression model on MRW data      
-rule model:
+## models        : Estimate an regression model on MRW data      
+rule models:
     input:
         script = config["src_analysis"] + "estimate_ols_model.R",
         data   = config["out_data"] + "mrw_complete.csv",
