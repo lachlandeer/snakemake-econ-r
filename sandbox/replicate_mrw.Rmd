@@ -26,7 +26,7 @@ library(car)        # linear hypotheses
 
 ## Load data
 ```{r}
-mrw_data <- read_dta("raw_data/mrw.dta")
+mrw_data <- read_dta("../src/data/mrw.dta")
 ```
 
 Structure?
@@ -98,7 +98,7 @@ solow_noil <- lm(ln_gdp_85 ~ ln_inv_gdp + ln_ndg, data = non_oil)
 #### Regression Table
 
 ```{r, results = 'asis'}
-stargazer(solow_noil, solow_int, solow_oecd, type = "html",
+stargazer(solow_noil, solow_int, solow_oecd, type = "text",
           column.labels = c("Non-Oil", 
                             "Intermediate", 
                             "OECD"),
@@ -125,7 +125,7 @@ solow_noil_r <- lm(ln_gdp_85 ~ I(ln_inv_gdp - ln_ndg), data = non_oil)
 #### Regression Table
 
 ```{r, results = 'asis'}
-stargazer(solow_noil_r, solow_int_r, solow_oecd_r, type = "html",
+stargazer(solow_noil_r, solow_int_r, solow_oecd_r, type = "text",
           column.labels = c("Non-Oil", 
                             "Intermediate", 
                             "OECD"),
@@ -137,6 +137,64 @@ stargazer(solow_noil_r, solow_int_r, solow_oecd_r, type = "html",
                         "ser"),
           title = "Table 1 - Restricted Models",
           style = "qje")
+```
+
+### Tables to modelsummary
+
+```{r}
+library(modelsummary)
+library(kableExtra)
+```
+
+
+```{r}
+models <- list(
+    solow_oecd <- lm(ln_gdp_85 ~ ln_inv_gdp + ln_ndg, data = oecd),
+    solow_int  <- lm(ln_gdp_85 ~ ln_inv_gdp + ln_ndg, data = intermediate),
+    solow_noil <- lm(ln_gdp_85 ~ ln_inv_gdp + ln_ndg, data = non_oil),
+    solow_oecd_r <- lm(ln_gdp_85 ~ I(ln_inv_gdp - ln_ndg), data = oecd),
+    solow_int_r  <- lm(ln_gdp_85 ~ I(ln_inv_gdp - ln_ndg), data = intermediate),
+    solow_noil_r <- lm(ln_gdp_85 ~ I(ln_inv_gdp - ln_ndg), data = non_oil)
+)
+
+names(models) <- c("(1)", "(2)", "(3)", "(4)", "(5)", "(6)")
+
+custom_row <- tibble::tribble(~term, ~"(1)", ~"(2)", ~"(3)", ~"(4)", ~"(5)", ~"(6)",
+                              "Restricted Model", "No", "No", "No", "Yes", "Yes", "Yes")
+
+attr(custom_row, 'position') <- c(9)
+
+f_int <- function(x) format(round(x, 2), big.mark=",", nsmall = 0) # integers
+f_dec <- function(x) format(round(x, 2), big.mark=",", nsmall = 2) # floats
+
+gm <- list(
+  list("raw" = "nobs", "clean" = "N", "fmt" = f_int),
+  list("raw" = "r.squared", "clean" = "$R^2$", "fmt" = f_dec))
+
+tab <- modelsummary(models,
+             fmt = "%.2f",
+             coef_map = c(    "ln_inv_gdp" = "log(I / GDP)",
+                              "ln_ndg" = "log(n + g + $\\delta$)",
+                              "I(ln_inv_gdp - ln_ndg)"=  "log(I / GDP) - log(n + g + $\\delta$)",
+                              '(Intercept)' = 'Constant'
+                               ),
+             statistic = "std.error",
+             stars = FALSE,
+             stars_note = FALSE,
+             gof_omit = 'DF|Deviance|Adj|AIC|BIC|Log.|F',
+             gof_map = gm,
+             add_rows = custom_row,
+             output = 'latex_tabular',
+             escape = FALSE # render latex as latex- needs FALSE
+             )
+tab 
+tab2 <- tab %>%
+    add_header_above(c(" " =1, "Non-Oil" =1, "Intermediate" =1 , "OECD"=1,
+                            "Non-Oil"=1, "Intermediate"=1, "OECD"=1)) %>%
+    add_header_above(c(" " =1, "Log(GDP '85) - Log(GDP '60)" =6)) %>%
+    row_spec(9, extra_latex_after = "\\midrule") %>%
+    save_kable(file = "table.tex", self_contained = FALSE)
+
 ```
 
 ### Test of Restriction
