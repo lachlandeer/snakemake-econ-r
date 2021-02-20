@@ -1,0 +1,8 @@
+{
+    "MODEL_PATH": "out/analysis",
+    "MODELS": "c('model_aug_cc.subset_nonoil.rds', 'model_aug_cc.subset_intermediate.rds', 'model_aug_cc.subset_oecd.rds')",
+    "COL_NAMES": "c('(1)', '(2)', '(3)')",
+    "DEP_VAR": "c(' ' =1, 'Log(GDP 1985) - Log(GDP 1960)' =3)",
+    "ADDITIONAL_HEADER": "c(' '=1, 'Non-Oil' =1, 'Intermediate' =1 , 'OECD'=1)",
+    "RESTRICTED_MODEL": "FALSE"
+}
