@@ -85,9 +85,9 @@ tab <- modelsummary(reg,
                     # coef map is constant across regression tables
                     coef_map = c(    'ln_inv_gdp' = 'log(I / GDP)',
                                      'ln_ndg' = 'log(n + g + $\\delta$)',
-                                     'I(ln_inv_gdp - ln_ndg)'=  'log(I / GDP) - log(n + g + $\\delta$)',
                                      'ln_school' = 'log(school)',
-                                     'I(ln_inv_gdp - ln_ndg) + I(ln_school - ln_ndg)' = 'log(school) - log(n + g + $\\delta$)',
+                                     'I(ln_inv_gdp - ln_ndg)'=  'log(I / GDP) - log(n + g + $\\delta$)',
+                                     'I(ln_school - ln_ndg)' = 'log(school) - log(n + g + $\\delta$)',
                                      '(Intercept)' = 'Constant'
                                   ),
                     statistic = "std.error",
