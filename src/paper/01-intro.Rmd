@@ -13,7 +13,7 @@ Further motivation will be in our online tutorial - but we are yet to release it
 
 ### If you find this useful
 
-* Please cite us. The main reference at the moment is @deerlanger2018
+* Please cite us. The main reference at the moment is @bdl2021
 
 If you find a bug or think there is not enough explanation:
 
