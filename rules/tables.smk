@@ -11,7 +11,7 @@ rule make_tables:
 # TODO: generalize to all files in folder
         spec   = config["src_table_specs"] + "{iTable}.R",
         models = expand(config["out_analysis"] +
-                        "{iModel}_ols_{iSubset}.rds",
+                        "{iModel}.{iSubset}.rds",
                         iModel = MODELS,
                         iSubset = DATA_SUBSET),
     params:
