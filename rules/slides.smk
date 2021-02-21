@@ -13,12 +13,12 @@ rule slides2root:
         "cp {input.pdf} {output.pdf}"
 
 ## build_beamer: knit beamer slides
-rule build_beamer:
+rule build_slides:
     input:
         runner    = config["src_lib"] + "knit_beamer.R",
         rmd_file  = config["src_slides"] + "slides.Rmd",
         tables    = config["out_tables"] +
-                        "tab03_ucc_solow.tex",
+                        "table_06.tex",
         figures   = expand(config["out_figures"] +
                             "{iPlot}.pdf",
                             iPlot = PLOTS),

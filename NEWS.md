@@ -1,5 +1,12 @@
 # snakemake-econ-r
 
+## Version 0.5.0 (2021/02/20)
+
+* Use `modelsummary` for regression tables rather than `stargazer`
+* Table specifications are in form of JSON dictionaries rather than separate R scripts, to mirror other specs folders
+* Better subfigure creation in main paper
+* Move towards latex specification for table and figure objects, gives better control for how we want things
+
 ## Version 0.4.0 (2021/01/27)
 
 * Compatible with R version 4.0.x via via [PR #7](https://github.com/lachlandeer/snakemake-econ-r/pull/7)
