@@ -1,0 +1,10 @@
+{
+    "MODEL_PATH": "out/analysis",
+    "MODELS": "c('model_solow.subset_nonoil.rds', 'model_solow.subset_intermediate.rds', 'model_solow.subset_oecd.rds', 'model_solow_restr.subset_nonoil.rds', 'model_solow_restr.subset_intermediate.rds', 'model_solow_restr.subset_oecd.rds')",
+    "COL_NAMES": "c('(1)', '(2)', '(3)', '(4)', '(5)', '(6)')",
+    "DEP_VAR": "c(' ' =1, 'Log(GDP per capita in 1965)' =6)",
+    "ADDITIONAL_HEADER": "c(' '=1, 'Non-Oil' =1, 'Intermediate' =1 , 'OECD'=1, 'Non-Oil'=1, 'Intermediate'=1, 'OECD'=1)",
+    "RESTRICTED_MODEL": "TRUE",
+    "RESTRICTION_LOG": "tribble(~term, ~'(1)', ~'(2)', ~'(3)', ~'(4)', ~'(5)', ~'(6)', 'Restricted Model', 'No', 'No', 'No', 'Yes', 'Yes', 'Yes')",
+    "RESTRICTION_POSITION": "9"
+}

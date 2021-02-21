@@ -41,7 +41,24 @@ output:
 
 ## Adding a Table
 
-\input{../../out/tables/tab03_ucc_solow.tex}
+\begin{table}[h!]
+    \begin{singlespace}
+    \caption{your caption}
+    \begin{center}
+    \begin{threeparttable}
+    \begin{footnotesize}
+    \input{../../out/tables/table_06.tex}
+    \end{footnotesize}
+    \begin{tablenotes}
+        \begin{footnotesize}
+    \item \textit{Notes:} some notes
+        \end{footnotesize}
+    \end{tablenotes}
+    \end{threeparttable}
+    \end{center}
+    \label{table:tbl_ref}
+        \end{singlespace}
+    \end{table}
 
 ## Adding a Figure
 

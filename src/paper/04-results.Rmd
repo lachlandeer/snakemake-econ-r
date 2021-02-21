@@ -1,7 +1,139 @@
 ## Results
-\input{../../out/tables/tab01_textbook_solow.tex}
-\input{../../out/tables/tab02_augment_solow.tex}
-\input{../../out/tables/tab03_ucc_solow.tex}
-\input{../../out/tables/tab04_cc_solow.tex}
-\input{../../out/tables/tab05_cc_aug_solow.tex}
-\input{../../out/tables/tab06_cc_aug_solow_restr.tex}
+
+### Table 1 
+
+\begin{table}[h!]
+    \begin{singlespace}
+    \caption{your caption}
+    \begin{center}
+    \begin{threeparttable}
+    \begin{footnotesize}
+    \input{../../out/tables/table_01.tex}
+    \end{footnotesize}
+    \begin{tablenotes}
+        \begin{footnotesize}
+    \item \textit{Notes:} some notes
+        \end{footnotesize}
+    \end{tablenotes}
+    \end{threeparttable}
+    \end{center}
+    \label{table:tbl_ref}
+        \end{singlespace}
+    \end{table}
+
+\newpage 
+
+### Table 2
+
+\begin{table}[h!]
+    \begin{singlespace}
+    \caption{your caption}
+    \begin{center}
+    \begin{threeparttable}
+    \begin{footnotesize}
+    \input{../../out/tables/table_02.tex}
+    \end{footnotesize}
+    \begin{tablenotes}
+        \begin{footnotesize}
+    \item \textit{Notes:} some notes
+        \end{footnotesize}
+    \end{tablenotes}
+    \end{threeparttable}
+    \end{center}
+    \label{table:tbl_ref}
+        \end{singlespace}
+    \end{table}
+
+\newpage 
+
+### Table 3
+
+\begin{table}[h!]
+    \begin{singlespace}
+    \caption{your caption}
+    \begin{center}
+    \begin{threeparttable}
+    \begin{footnotesize}
+    \input{../../out/tables/table_03.tex}
+    \end{footnotesize}
+    \begin{tablenotes}
+        \begin{footnotesize}
+    \item \textit{Notes:} some notes
+        \end{footnotesize}
+    \end{tablenotes}
+    \end{threeparttable}
+    \end{center}
+    \label{table:tbl_ref}
+        \end{singlespace}
+    \end{table}
+
+\newpage 
+
+### Table 4
+
+\begin{table}[h!]
+    \begin{singlespace}
+    \caption{your caption}
+    \begin{center}
+    \begin{threeparttable}
+    \begin{footnotesize}
+    \input{../../out/tables/table_04.tex}
+    \end{footnotesize}
+    \begin{tablenotes}
+        \begin{footnotesize}
+    \item \textit{Notes:} some notes
+        \end{footnotesize}
+    \end{tablenotes}
+    \end{threeparttable}
+    \end{center}
+    \label{table:tbl_ref}
+        \end{singlespace}
+    \end{table}
+
+\newpage 
+
+### Table 5
+
+\begin{table}[h!]
+    \begin{singlespace}
+    \caption{your caption}
+    \begin{center}
+    \begin{threeparttable}
+    \begin{footnotesize}
+    \input{../../out/tables/table_05.tex}
+    \end{footnotesize}
+    \begin{tablenotes}
+        \begin{footnotesize}
+    \item \textit{Notes:} some notes
+        \end{footnotesize}
+    \end{tablenotes}
+    \end{threeparttable}
+    \end{center}
+    \label{table:tbl_ref}
+        \end{singlespace}
+    \end{table}
+
+\newpage 
+
+### Table 6
+
+\begin{table}[h!]
+    \begin{singlespace}
+    \caption{your caption}
+    \begin{center}
+    \begin{threeparttable}
+    \begin{footnotesize}
+    \input{../../out/tables/table_06.tex}
+    \end{footnotesize}
+    \begin{tablenotes}
+        \begin{footnotesize}
+    \item \textit{Notes:} some notes
+        \end{footnotesize}
+    \end{tablenotes}
+    \end{threeparttable}
+    \end{center}
+    \label{table:tbl_ref}
+        \end{singlespace}
+    \end{table}
+
+\newpage 

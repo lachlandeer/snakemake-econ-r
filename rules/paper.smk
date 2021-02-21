@@ -21,7 +21,7 @@ rule paper2root:
         "cp {input.pdf} {output.pdf}"
 
 ## knit_pdf: builds pdf using bookdown
-rule knit_pdf:
+rule build_paper:
     input:
         text_files = RMD_FILES,
         yaml_files = YAML_FILES,
