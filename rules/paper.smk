@@ -1,6 +1,10 @@
 # Rules: paper
 #
-# rticle-style: asa
+# Compile paper as pdf using bookdown and rticles
+#
+# rticle-style: asa (see 'src/paper/_output.yml' for where we set the style)
+# If you change the template, will need to change structure of yaml in 
+# `src/paper/index.Rmd` accordingly
 #
 # contributors: @lachlandeer, @julianlanger, @bergmul
 
