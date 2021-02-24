@@ -20,7 +20,7 @@ rule paper2root:
     shell:
         "cp {input.pdf} {output.pdf}"
 
-## knit_pdf: builds pdf using bookdown
+## build_paper: builds pdf using bookdown
 rule build_paper:
     input:
         text_files = RMD_FILES,
