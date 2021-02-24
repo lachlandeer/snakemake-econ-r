@@ -1,5 +1,11 @@
 # snakemake-econ-r
 
+## Version 0.5.1 (2021/02/24)
+
+* Updates the Rscripts to build slides and pdfs to work in a way consistent with all other Rscripts in this project
+  * Use `optparse` with meaningful defaults for CLI
+  * Add barebones comments to scripts `build_article.R` and `build_slides.R` to try and explain what scripts are doing
+
 ## Version 0.5.0 (2021/02/20)
 
 * Use `modelsummary` for regression tables rather than `stargazer`
