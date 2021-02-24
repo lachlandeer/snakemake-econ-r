@@ -17,7 +17,7 @@
     \end{tablenotes}
     \end{threeparttable}
     \end{center}
-    \label{table:tbl_ref}
+    \label{table:tbl_ref1}
         \end{singlespace}
     \end{table}
 
@@ -40,7 +40,7 @@
     \end{tablenotes}
     \end{threeparttable}
     \end{center}
-    \label{table:tbl_ref}
+    \label{table:tbl_ref2}
         \end{singlespace}
     \end{table}
 
@@ -63,7 +63,7 @@
     \end{tablenotes}
     \end{threeparttable}
     \end{center}
-    \label{table:tbl_ref}
+    \label{table:tbl_ref3}
         \end{singlespace}
     \end{table}
 
@@ -86,7 +86,7 @@
     \end{tablenotes}
     \end{threeparttable}
     \end{center}
-    \label{table:tbl_ref}
+    \label{table:tbl_ref4}
         \end{singlespace}
     \end{table}
 
@@ -109,7 +109,7 @@
     \end{tablenotes}
     \end{threeparttable}
     \end{center}
-    \label{table:tbl_ref}
+    \label{table:tbl_ref5}
         \end{singlespace}
     \end{table}
 
@@ -132,7 +132,7 @@
     \end{tablenotes}
     \end{threeparttable}
     \end{center}
-    \label{table:tbl_ref}
+    \label{table:tbl_ref6}
         \end{singlespace}
     \end{table}
 
