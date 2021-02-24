@@ -13,7 +13,7 @@ option_list = list(
    make_option(c("-i", "--index"),
                type = "character",
                default = "src/paper/index.Rmd",
-               help = "a csv file name",
+               help = "Name of rmarkdown file where paper metadata is located",
                metavar = "character")
 )
 
