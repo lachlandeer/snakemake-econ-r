@@ -14,7 +14,7 @@ TEX_FILES  = glob.glob(config["src_paper"] + "*.tex")
 ## paper2root:   copy paper to root directory
 rule paper2root:
     input:
-        pdf  = config["out_paper"] + "my_article.pdf",
+        pdf  = config["out_paper"] + "article.pdf",
     output:
         pdf  = PROJ_NAME + ".pdf",
     shell:
@@ -33,10 +33,10 @@ rule build_paper:
         figures = expand(config["out_figures"] +
                             "{iPlot}.pdf",
                             iPlot = PLOTS),
-        runner     = config["src_lib"] + "build_pdfbook.R"
+        runner     = config["src_lib"] + "build_article.R"
     output:
-        config["out_paper"] + "my_article.pdf"
+        config["out_paper"] + "article.pdf"
     log:
-        config["log"] + "paper/build_pdf.Rout"
+        config["log"] + "paper/build_article.Rout"
     shell:
         "{runR} {input.runner} > {log} {logAll}"

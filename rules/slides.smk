@@ -15,7 +15,7 @@ rule slides2root:
 ## build_beamer: knit beamer slides
 rule build_slides:
     input:
-        runner    = config["src_lib"] + "knit_beamer.R",
+        runner    = config["src_lib"] + "build_slides.R",
         rmd_file  = config["src_slides"] + "slides.Rmd",
         tables    = config["out_tables"] +
                         "table_06.tex",
