@@ -6,7 +6,7 @@
 ## slides2root:    move slides to root directory
 rule slides2root:
     input:
-        pdf  = config["out_slides"] + PROJ_NAME + "_slides.pdf"
+        pdf  = config["out_slides"] + "slides.pdf"
     output:
         pdf  = PROJ_NAME + "_slides.pdf",
     shell:
@@ -24,9 +24,9 @@ rule build_slides:
                             iPlot = PLOTS),
         preamble  = config["src_slides"] + "preamble.tex"
     output:
-        pdf = config["out_slides"] + PROJ_NAME + "_slides.pdf"
+        pdf = config["out_slides"] + "slides.pdf"
     log:
         config["log"]+ "slides/slides.Rout"
     shell:
-        "{runR} {input.runner} {input.rmd_file} {output.pdf} \
+        "{runR} {input.runner} \
             > {log} {logAll}"
