@@ -38,7 +38,7 @@ rule clean_all:
 
 # --- Help Rules --- #
 ## help_main      : prints help comments for Snakefile in ROOT directory. 
-##                  Help for rules in other parts of the workflows (i.e. in workflow/)
+##                  Help for rules in other parts of the workflows (i.e. in rules/)
 ##                  can be called by `snakemake help_<workflowname>`
 rule help_main:
     input: "Snakefile"
