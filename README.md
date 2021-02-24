@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/lachlandeer/snakemake-econ-r.svg?branch=master)](https://travis-ci.org/lachlandeer/snakemake-econ-r)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![lifecycle](https://img.shields.io/badge/version-0.5-red.svg)]()
+[![lifecycle](https://img.shields.io/badge/version-0.5.1-red.svg)]()
 
 ## Introduction
 
