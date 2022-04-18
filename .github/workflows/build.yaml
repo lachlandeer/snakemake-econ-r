@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Install Ubuntu packages
         if: matrix.os == 'ubuntu-latest' 
-          run: sudo apt-get install -y software-properties-common libxml2-dev zlib1g-dev libcurl4-openssl-dev wget
+        run: sudo apt-get install -y software-properties-common libxml2-dev zlib1g-dev libcurl4-openssl-dev wget
     # python
       - uses: actions/checkout@v3
       - name: Set up Python
