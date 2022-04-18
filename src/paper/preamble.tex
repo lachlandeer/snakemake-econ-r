@@ -1,4 +1,5 @@
 \usepackage{booktabs}
+\usepackage{siunitx}
 % \usepackage{subfig}
 \usepackage{subcaption}
 \usepackage{setspace} % adjust line space on the fly
@@ -11,6 +12,8 @@
   \thm@preskip=8pt plus 2pt minus 4pt
   \thm@postskip=\thm@preskip
 }
+
+\newcolumntype{d}{S[input-symbols = ()]}
 
 % figure note environment
 \newenvironment{fignote}{\begin{quote}\footnotesize}{\end{quote}}
