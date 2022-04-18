@@ -1,5 +1,11 @@
 # snakemake-econ-r
 
+## Version 0.6 (2022/04/19)
+
+* Snakemake version upgrade (7.x)
+* Update R packages
+* Update latex preambles to handle new `modelsummary` defaults
+
 ## Version 0.5.1 (2021/02/24)
 
 * Updates the Rscripts to build slides and pdfs to work in a way consistent with all other Rscripts in this project
