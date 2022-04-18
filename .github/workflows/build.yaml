@@ -1,3 +1,8 @@
+on:
+  push:
+     branches:
+       - gh_actions
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
