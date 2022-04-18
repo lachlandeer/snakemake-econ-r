@@ -30,3 +30,9 @@ rule renv_snap:
 rule renv_restore:
     shell:
         "R -e 'renv::restore()'"
+
+## renv_update:  Update R packages to most recent
+rule renv_update:
+    shell: 
+        "R -e 'renv::update()'"
+
