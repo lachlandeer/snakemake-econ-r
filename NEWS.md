@@ -5,6 +5,7 @@
 * Snakemake version upgrade (7.x)
 * Update R packages
 * Update latex preambles to handle new `modelsummary` defaults
+* Tests run via GitHub Actions for Ubuntu and MacOS rather than Travis
 
 ## Version 0.5.1 (2021/02/24)
 
