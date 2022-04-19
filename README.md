@@ -1,7 +1,7 @@
 # A Reproducible Workflow for Economics Research Using Snakemake and R
 
-[![Build Status](https://travis-ci.org/lachlandeer/snakemake-econ-r.svg?branch=master)](https://travis-ci.org/lachlandeer/snakemake-econ-r)
-![Build Status](https://github.com/lachlandeer/snakemake-econ-r/actions/workflows/build.yaml/badge.svg)
+<!-- [![Build Status](https://travis-ci.org/lachlandeer/snakemake-econ-r.svg?branch=master)](https://travis-ci.org/lachlandeer/snakemake-econ-r) -->
+[![.github/workflows/build.yaml](https://github.com/lachlandeer/snakemake-econ-r/actions/workflows/build.yaml/badge.svg)](https://github.com/lachlandeer/snakemake-econ-r/actions/workflows/build.yaml)
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![lifecycle](https://img.shields.io/badge/version-0.6.1-red.svg)]()
 
