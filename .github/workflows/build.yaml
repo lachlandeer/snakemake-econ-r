@@ -1,7 +1,7 @@
 on:
   push:
      branches:
-       - gh_actions
+       - master
 
 jobs:
   build:
